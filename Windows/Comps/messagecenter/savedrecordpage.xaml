@@ -1,0 +1,83 @@
+<Page x:Class="IDKin.IM.Windows.Comps.MessageCenter.SavedRecordPage" Title="SavedRecordPage" Style="{DynamicResource PageStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Page.Resources>
+    <Style x:Key="FlowDocumentStyle" TargetType="{x:Type FlowDocument}">
+      <Style.Resources>
+        <Style TargetType="{x:Type Paragraph}">
+          <Setter Property="Block.Margin" Value="5" />
+        </Style>
+      </Style.Resources>
+    </Style>
+    <Style x:Key="pageButtonStyle" TargetType="{x:Type Button}">
+      <Setter Property="FrameworkElement.Width" Value="16" />
+      <Setter Property="FrameworkElement.Height" Value="16" />
+      <Setter Property="FrameworkElement.Margin" Value="2,0,2,0" />
+      <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+      <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+      <Setter Property="Control.Foreground" Value="#FF006290" />
+      <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border Name="PART_Border">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Page.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="25" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="25" />
+    </Grid.RowDefinitions>
+    <Border Grid.Row="0">
+      <Border.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+          <GradientStop Color="#FFFFFF" Offset="0" />
+          <GradientStop Color="#B4EFFE" Offset="1" />
+        </LinearGradientBrush>
+      </Border.Background>
+    </Border>
+    <TextBlock Grid.Row="0" Text="与XX的消息记录" VerticalAlignment="Center" />
+    <Grid Grid.Row="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="25" />
+      </Grid.RowDefinitions>
+      <ListView Name="SavedList" Grid.Row="1" BorderThickness="0" />
+      <Border Grid.Row="2" Background="#FFDCF7FF" />
+      <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+        <Button Name="FirstPage" VerticalContentAlignment="Center" Content="&lt;&lt;" ToolTip="第一页" Style="{StaticResource pageButtonStyle}" />
+        <Button Name="PrePage" Content="&lt;" ToolTip="上一页" Style="{StaticResource pageButtonStyle}" />
+        <TextBlock Text="第" VerticalAlignment="Center" />
+        <TextBox Name="textPage" Width="40" Height="20" VerticalAlignment="Center" />
+        <TextBlock Name="tbkTotal" Text="页/1页" VerticalAlignment="Center" />
+        <Button Name="NextPage" Content="&gt;" ToolTip="下一页" Style="{StaticResource pageButtonStyle}" />
+        <Button Name="LastPage" Content="&gt;&gt;" ToolTip="最后一页" Style="{StaticResource pageButtonStyle}" />
+      </StackPanel>
+    </Grid>
+    <Border Grid.Row="2" Background="#FFFFFFFF" BorderBrush="#00FFFFFF" BorderThickness="0">
+      <FlowDocumentScrollViewer Name="ViewMessageBoxViewer" Margin="0" ZoomIncrement="1" Zoom="100" MinZoom="50" BorderBrush="#00FFFFFF" BorderThickness="0" Background="#00FFFFFF" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <FlowDocument Name="ViewMessageBox" Style="{StaticResource FlowDocumentStyle}" IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True" PagePadding="0">
+          <Table>
+            <TableRowGroup Name="trgMessageTable" />
+          </Table>
+        </FlowDocument>
+      </FlowDocumentScrollViewer>
+    </Border>
+    <Border Grid.Row="3" Background="#FFDCF7FF" />
+    <TextBlock Text="已使用123KB/共100MB" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" />
+    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+      <TextBlock Margin="5,0,5,0">
+        <Hyperlink>上页</Hyperlink>
+      </TextBlock>
+      <TextBlock Margin="5,0,5,0">
+        <Hyperlink>下页</Hyperlink>
+      </TextBlock>
+    </StackPanel>
+  </Grid>
+</Page>

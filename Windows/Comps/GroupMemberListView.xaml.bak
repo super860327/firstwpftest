@@ -1,0 +1,1 @@
+<ListView x:Class="IDKin.IM.Windows.Comps.GroupMemberListView" Name="GroupMemberList" BorderThickness="1" FocusVisualStyle="{x:Null}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"></ListView>

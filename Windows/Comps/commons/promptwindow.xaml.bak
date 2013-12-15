@@ -1,0 +1,8 @@
+﻿<Window x:Class="IDKin.IM.Windows.View.Commons.PromptWindow" Title="InputTextWindow" Height="200" Width="300" ResizeMode="NoResize" TextOptions.TextFormattingMode="Display" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Canvas>
+    <Label Name="lblTitle" Content="lblTitle" Height="28" Canvas.Left="9" Canvas.Top="0" />
+    <TextBox Name="txtContext" Height="110" Width="275" Canvas.Left="9" Canvas.Top="30" />
+    <Button Name="btnEnter" Content="确定" Width="60" Height="22" Canvas.Left="159" Canvas.Top="146" Style="{DynamicResource NormalButtonStyle}" Click="btnEnter_Click" />
+    <Button Name="btnCancel" Content="取消" Width="60" Height="22" Canvas.Left="225" Canvas.Top="146" Style="{DynamicResource NormalButtonStyle}" Click="btnCancel_Click" />
+  </Canvas>
+</Window>

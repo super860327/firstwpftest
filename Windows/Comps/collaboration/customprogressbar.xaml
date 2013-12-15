@@ -1,0 +1,34 @@
+<ProgressBar x:Class="IDKin.IM.Windows.Comps.CustomProgressBar" Style="{DynamicResource ProgressBarStyle}" Height="14" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ProgressBar.Resources>
+    <LinearGradientBrush x:Key="PressedBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+      <GradientStop Color="#F3F3F3" Offset="0" />
+      <GradientStop Color="#E5655C" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+    <LinearGradientBrush x:Key="DarkBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+      <GradientStop Color="#F6FCEB" Offset="0" />
+      <GradientStop Color="#9DD72F" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
+      <LinearGradientBrush.GradientStops>
+        <GradientStopCollection>
+          <GradientStop Color="#CCC" Offset="0.0" />
+          <GradientStop Color="#444" Offset="1.0" />
+        </GradientStopCollection>
+      </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <Style x:Key="ProgressBarStyle" TargetType="{x:Type ProgressBar}">
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type ProgressBar}">
+            <Grid MinHeight="14" MinWidth="200">
+              <Border Name="PART_Track" CornerRadius="2" Background="{StaticResource PressedBrush}" BorderBrush="#00FFFFFF" BorderThickness="1" />
+              <Border Name="PART_Indicator" CornerRadius="2" Background="{StaticResource DarkBrush}" BorderBrush="#00FFFFFF" BorderThickness="1" HorizontalAlignment="Left" />
+              <TextBlock Name="PART_IndicatorText" VerticalAlignment="Center" />
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </ProgressBar.Resources>
+</ProgressBar>

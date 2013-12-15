@@ -1,0 +1,131 @@
+<UserControl x:Class="IDKin.IM.Windows.Comps.PersonalChatTabControl" Margin="-4" AllowDrop="True" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cc="clr-namespace:IDKin.IM.Windows.Comps" xmlns:oacwc="clr-namespace:IDKin.IM.Windows.Comps.OA">
+  <UserControl.Resources>
+    <Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
+      <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+      <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="False" />
+      <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+      <Setter Property="Control.BorderThickness" Value="0" />
+      <Setter Property="Control.BorderBrush" Value="#00FFFFFF" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type TabItem}">
+            <Grid Margin="0,0,0,-1">
+              <Border Name="PART_Border" BorderBrush="#FF29A7D2" BorderThickness="{TemplateBinding Control.BorderThickness}" />
+              <ContentPresenter ContentSource="Header" Margin="5,3,5,3" />
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="TabItem.IsSelected" Value="True">
+                <Setter TargetName="PART_Border" Property="Border.Background" Value="#FFE6F8FD" />
+              </Trigger>
+              <Trigger Property="TabItem.IsSelected" Value="False">
+                <Setter TargetName="PART_Border" Property="Border.Background" Value="#FFA3DFF0" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="60" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="60" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <Border Grid.Row="0" Grid.Column="0" Width="50" Height="50" CornerRadius="3" Panel.ZIndex="1" BorderThickness="1" BorderBrush="#FF20D2F9" HorizontalAlignment="Center" VerticalAlignment="Center">
+      <Border.Effect>
+        <DropShadowEffect Color="LightGray" ShadowDepth="0.1" Opacity="0.8" />
+      </Border.Effect>
+      <Border CornerRadius="2" BorderThickness="4" BorderBrush="#FF0C8DBF">
+        <Border.Background>
+          <ImageBrush x:Name="userHead" ImageSource="/IDKin.IM.Windows;component/Resources/Image/head.png" Stretch="Fill" TileMode="Tile" />
+        </Border.Background>
+      </Border>
+    </Border>
+    <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="55" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Border Grid.Row="0">
+        <Border.Background>
+          <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#FFFFFF" Offset="0" />
+            <GradientStop Color="#B4EFFE" Offset="1" />
+          </LinearGradientBrush>
+        </Border.Background>
+      </Border>
+      <Image Width="166" Stretch="None" Source="/IDKin.IM.Windows;component/Resources/Image/imgAdvertise.png" HorizontalAlignment="Right" />
+      <Grid Grid.Row="0" Margin="58,2,10,0" Height="30" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="tbkName" Grid.Column="0" Padding="0,10,0,0" TextBlock.Foreground="#FF006D83" TextBlock.FontWeight="Bold" />
+        <TextBlock Name="tbkID" Grid.Column="1" Padding="0,10,0,0" TextBlock.Foreground="#FF006D83" />
+        <TextBlock Name="tbkSignature" Grid.Column="2" Padding="0,10,167,0" TextTrimming="WordEllipsis" HorizontalAlignment="Left">
+          <TextBlock.ToolTip>
+            <ToolTip Name="toolTip" MaxWidth="250">
+              <TextBlock Name="tbkToolTip" TextWrapping="Wrap" VerticalAlignment="Top" />
+            </ToolTip>
+          </TextBlock.ToolTip>
+        </TextBlock>
+      </Grid>
+      <TabControl Name="ChatTab" Margin="0,30,0,0" Grid.Row="0" Grid.RowSpan="2" BorderThickness="0,1,0,0" BorderBrush="#FF29A7D2" FocusVisualStyle="{x:Null}" SelectionChanged="ChatTab_SelectionChanged">
+        <TabItem Selector.IsSelected="False" IsEnabled="False" FocusVisualStyle="{x:Null}">
+          <TabItem.Template>
+            <ControlTemplate TargetType="{x:Type TabItem}">
+              <Line Width="58" Visibility="Hidden" />
+            </ControlTemplate>
+          </TabItem.Template>
+        </TabItem>
+        <TabItem Header="   对话  " Selector.IsSelected="True" Style="{StaticResource TabItemStyle}" BorderThickness="1,1,0,0">
+          <cc:ChatComponent x:Name="ChatComponent" Margin="-4" />
+        </TabItem>
+        <TabItem Header="工作动态" Style="{StaticResource TabItemStyle}" BorderThickness="1,1,0,0">
+          <oacwc:OACurrentWorkControl x:Name="OACurrentWork" />
+        </TabItem>
+        <TabItem Name="profireItem" Header="个人信息" Style="{StaticResource TabItemStyle}" BorderThickness="1,1,1,0">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="25" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" BorderBrush="#FFB2E1F1" BorderThickness="0,0,0,1" Margin="-4,-4,-4,0">
+              <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                  <GradientStop Color="#FFC5F1FD" Offset="1" />
+                  <GradientStop Color="#FFD6F6FE" />
+                </LinearGradientBrush>
+              </Border.Background>
+            </Border>
+            <Frame Name="userProfileFrame" Grid.Row="1" Margin="-4,0,-4,-4" NavigationUIVisibility="Hidden" FocusVisualStyle="{x:Null}" />
+          </Grid>
+        </TabItem>
+        <TabItem Name="tabItemPerson" Background="#00FFFFFF" FocusVisualStyle="{x:Null}">
+          <TabItem.Template>
+            <ControlTemplate TargetType="{x:Type TabItem}">
+              <Button Name="btnTabItem">
+                <Button.Template>
+                  <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel Orientation="Horizontal" Margin="5,0,0,0" Background="#00FFFFFF">
+                      <cc:IconButton x:Name="btnSendFile" Click="btnSendFile_Click" Margin="10,0,0,2" ToolTip="发送文件" Icon="/IDKin.IM.Windows;component/Resources/Icon/sendFileIcon.png" Visibility="Visible" />
+                      <cc:IconButton x:Name="btnMsgBox" Click="btnMsgBox_Click" Margin="10,0,0,2" ToolTip="消息盒子" Icon="/IDKin.IM.Windows;component/Resources/Icon/giftIcon.png" Visibility="Collapsed" />
+                      <cc:ImageSplitButton x:Name="btnScreenshot" Click="btnScreenshot_Click" ArrowClick="btnScreenshot_ArrowClick" Margin="10,0,0,2" ToolTip="截屏" Icon="/IDKin.IM.Windows;component/Resources/Icon/screenshotsIcon.png" />
+                      <cc:IconButton x:Name="btnSendImg" Click="btnSendImg_Click" Margin="10,0,0,2" ToolTip="发送图片" Icon="/IDKin.IM.Windows;component/Resources/Icon/sendImageIcon.png" Visibility="Collapsed" />
+                      <cc:IconButton x:Name="btnGift" Click="btnGift_Click" Margin="10,0,0,2" ToolTip="礼品" Icon="/IDKin.IM.Windows;component/Resources/Icon/giftIcon.png" Visibility="Collapsed" />
+                    </StackPanel>
+                  </ControlTemplate>
+                </Button.Template>
+              </Button>
+            </ControlTemplate>
+          </TabItem.Template>
+        </TabItem>
+      </TabControl>
+    </Grid>
+  </Grid>
+</UserControl>

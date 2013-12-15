@@ -1,0 +1,135 @@
+<Window x:Class="IDKin.IM.Windows.View.AddFriends.SearchRosterWindow" Name="searchRosterWindow" Title="添加联系人/群/企业" Height="445" Width="455" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True" Background="#00FFFFFF" Style="{DynamicResource WindowStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ib="clr-namespace:IDKin.IM.CustomComponents.Controls;assembly=IDKin.IM.CustomComponents">
+  <Window.Resources>
+    <Style x:Key="TabControlStyle" TargetType="{x:Type TabControl}">
+      <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+      <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type TabControl}">
+            <Grid KeyboardNavigation.TabNavigation="Local">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+              <Border>
+                <Border.Background>
+                  <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#BEBEBE" Offset="0.5" />
+                    <GradientStop Color="#F3F3F3" Offset="1" />
+                  </LinearGradientBrush>
+                </Border.Background>
+              </Border>
+              <TabPanel Name="HeaderPanel" Grid.Row="0" ZIndex="1" Margin="0,2,4,-1" IsItemsHost="True" KeyboardNavigation.TabIndex="1" Background="#00FFFFFF" />
+              <Border Name="Border" Grid.Row="1" Background="#00FFFFFF" BorderBrush="#00FFFFFF" BorderThickness="1" CornerRadius="2" KeyboardNavigation.TabNavigation="Local" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabIndex="2">
+                <ContentPresenter Name="PART_SelectedContentHost" Margin="4" ContentSource="SelectedContent" />
+              </Border>
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="UIElement.IsEnabled" Value="False">
+                <Setter Property="Control.Foreground" Value="#FF888888" />
+                <Setter TargetName="Border" Property="Border.BorderBrush" Value="#FFAAAAAA" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="TabItemStyle" TargetType="{x:Type TabItem}">
+      <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type TabItem}">
+            <Border Name="PART_Border" BorderBrush="#FFBEBEBE" BorderThickness="0,0,1,1">
+              <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                  <GradientStop Color="#BEBEBE" Offset="0.5" />
+                  <GradientStop Color="#F3F3F3" Offset="1" />
+                </LinearGradientBrush>
+              </Border.Background>
+              <ContentPresenter Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="20,3,20,3" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="TabItem.IsSelected" Value="True">
+                <Setter TargetName="PART_Border" Property="Border.Background" Value="#00FFFFFF" />
+                <Setter TargetName="PART_Border" Property="Border.BorderBrush" Value="#00FFFFFF" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Window.Resources>
+  <Border Name="OuterBorder" Style="{DynamicResource OuterBorderStyle}">
+    <Border Name="InnerBorder" Style="{DynamicResource InnerBorderStyle}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <StatusBar Name="topBar" VerticalAlignment="Top" BorderThickness="0" BorderBrush="#00FFFFFF">
+          <StatusBar.Background>
+            <ImageBrush ImageSource="/IDKin.IM.Windows;component/Resources/Image/topGlowbg.png" AlignmentY="Top" />
+          </StatusBar.Background>
+          <Image Name="imgIcon" Stretch="Fill" Width="16" Height="16" Source="/IDKin.IM.Windows;component/Resources/Icon/ico_16.png" />
+          <TextBlock TextBlock.Foreground="#FFFFFFFF" TextBlock.FontWeight="Bold" Text="{Binding ElementName=searchRosterWindow, Path=Title}">
+            <TextBlock.Effect>
+              <DropShadowEffect Color="Gray" ShadowDepth="3" Opacity="0.5" />
+            </TextBlock.Effect>
+          </TextBlock>
+        </StatusBar>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,0,0">
+          <ib:ImageButton Name="btnMin" FrameworkElement.Margin="3,0,3,0" FrameworkElement.Width="16" FrameworkElement.Height="16" FrameworkElement.ToolTip="最小化" NormalImage="/IDKin.IM.Windows;component/Resources/Image/min.png" HoverImage="/IDKin.IM.Windows;component/Resources/Image/minOver.png" PressedImage="/IDKin.IM.Windows;component/Resources/Image/minPress.png" Click="btnMin_Click" />
+          <ib:ImageButton Name="btnClose" FrameworkElement.Margin="3,0,3,0" FrameworkElement.Width="16" FrameworkElement.Height="16" FrameworkElement.ToolTip="关闭" NormalImage="/IDKin.IM.Windows;component/Resources/Image/close.png" HoverImage="/IDKin.IM.Windows;component/Resources/Image/closeOver.png" PressedImage="/IDKin.IM.Windows;component/Resources/Image/closePress.png" Click="btnClose_Click" />
+        </StackPanel>
+        <Border Grid.Row="1" Margin="0">
+          <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.8,0">
+              <GradientStop Color="#F3F3F3" Offset="0" />
+              <GradientStop Color="#95DDFF" Offset="1" />
+            </LinearGradientBrush>
+          </Border.Background>
+          <TabControl Name="tab" Style="{StaticResource TabControlStyle}">
+            <TabItem Name="tabItem1" Header="添加联系人" Margin="0" Style="{StaticResource TabItemStyle}">
+              <Canvas>
+                <TextBlock Text="查找方式" Canvas.Left="31" Canvas.Top="26" />
+                <Separator Canvas.Left="100" Canvas.Top="32" Width="265" Height="1" Opacity="0.5" />
+                <RadioButton Name="rbtByin" GroupName="searchStyle" Canvas.Left="31" Canvas.Top="70" Content="按in号查找" Height="16" IsChecked="True" FocusVisualStyle="{x:Null}" Checked="RadioButton_Checked" />
+                <RadioButton Name="rbtByCondition" GroupName="searchStyle" Canvas.Left="169" Canvas.Top="70" Content="按条件查找" Height="16" FocusVisualStyle="{x:Null}" Checked="RadioButton_Checked" />
+                <TextBlock Name="tbkInid" Canvas.Left="31" Canvas.Top="148" Text="in号：" />
+                <TextBox Name="tbxInid" Canvas.Left="31" Canvas.Top="170" Height="23" Width="297" />
+                <Canvas Name="conditionCanvas" Canvas.Left="18" Canvas.Top="100" Height="205" Width="385" Visibility="Collapsed">
+                  <TextBlock Text="请输入条件：" Canvas.Left="6" Canvas.Top="0" />
+                  <TextBlock Canvas.Left="6" Canvas.Top="22" Text="国家：" />
+                  <ComboBox Name="comboBox1" Canvas.Left="6" Canvas.Top="43" Height="23" Width="146" IsEditable="True" IsReadOnly="True" />
+                  <TextBlock Canvas.Left="160" Canvas.Top="22" Text="姓名：" />
+                  <TextBox Name="comboBox2" Canvas.Left="160" Canvas.Top="43" Height="23" Width="106" />
+                  <TextBlock Canvas.Left="273" Canvas.Top="22" Text="昵称：" />
+                  <TextBox Name="textBox1" Canvas.Left="273" Canvas.Top="43" Height="23" Width="106" />
+                  <TextBlock Canvas.Left="6" Canvas.Top="81" Text="省份：" />
+                  <ComboBox Name="comboBox3" Canvas.Left="6" Canvas.Top="102" Height="23" IsEditable="True" IsReadOnly="True" Width="146" />
+                  <TextBlock Canvas.Left="160" Canvas.Top="81" Text="年龄：" />
+                  <TextBox Name="textBox2" Canvas.Left="160" Canvas.Top="102" Height="23" Width="106" />
+                  <TextBlock Canvas.Left="273" Canvas.Top="81" Text="职业：" />
+                  <TextBox Name="textBox3" Canvas.Left="273" Canvas.Top="102" Height="23" Width="106" />
+                  <TextBlock Canvas.Left="6" Canvas.Top="143" Text="城市：" />
+                  <ComboBox Name="comboBox4" Canvas.Left="6" Canvas.Top="164" Height="23" IsEditable="True" IsReadOnly="True" Width="146" />
+                  <TextBlock Canvas.Left="160" Canvas.Top="143" Text="性别：" />
+                  <ComboBox Name="textBox4" Canvas.Left="160" Canvas.Top="164" Height="23" Width="106" IsEditable="True" IsReadOnly="True" />
+                  <TextBlock Canvas.Left="273" Canvas.Top="143" Text="网络状态：" />
+                  <ComboBox Name="textBox5" Canvas.Left="273" Canvas.Top="164" Height="23" Width="106" IsEditable="True" IsReadOnly="True" />
+                </Canvas>
+                <TextBlock Canvas.Left="15" Canvas.Top="320" Text="当前在线人数：xxx" Height="16" />
+              </Canvas>
+            </TabItem>
+            <TabItem Name="tabItem2" Header="添加群" Margin="0,-2,0,0" Style="{StaticResource TabItemStyle}" />
+            <TabItem Name="tabItem3" Header="添加企业" Margin="0,-2,0,0" Style="{StaticResource TabItemStyle}" />
+          </TabControl>
+        </Border>
+        <Border Grid.Row="2" Background="#FFC2E9FA" />
+        <Button Name="btnSearch" Content="查找" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="60" Height="20" Margin="0,0,70,0" Style="{DynamicResource NormalButtonStyle}" />
+        <Button Name="btnCancel" Content="取消" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="60" Height="20" Margin="0,0,5,0" Style="{DynamicResource NormalButtonStyle}" />
+      </Grid>
+    </Border>
+  </Border>
+</Window>

@@ -1,0 +1,8 @@
+<TabItem x:Class="IDKin.IM.Windows.Comps.CollaborationTabItem" Header="Ð­×÷" FocusVisualStyle="{x:Null}" Loaded="TabItem_Loaded" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Background="#FFE6F8FD" Margin="-5">
+        <Grid>
+            <TextBlock Name="tbkTip" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="8" TextBlock.Foreground="#FF7E8081" TextBlock.LineHeight="20" TextWrapping="Wrap" TextTrimming="WordEllipsis" />
+            <TreeView Name="TreeRoot" BorderThickness="0" Background="#00FFFFFF" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FocusVisualStyle="{x:Null}" />
+        </Grid>
+    </Border>
+</TabItem>

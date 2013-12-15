@@ -1,0 +1,14 @@
+<TableRow x:Class="IDKin.IM.Windows.Comps.OA.CurrentWork.OAAllCurrentWorkDateRow" Background="#FFC3EAF6" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TableRow.Resources>
+    <Style x:Key="{x:Type TextBlock}" TargetType="{x:Type TextBlock}">
+      <Setter Property="TextBlock.FontFamily" Value="ËÎÌו" />
+      <Setter Property="TextBlock.FontSize" Value="12" />
+      <Setter Property="FrameworkElement.VerticalAlignment" Value="Center" />
+    </Style>
+  </TableRow.Resources>
+  <TableCell>
+    <Paragraph>
+      <TextBlock Name="tbkDateGroup" Text="2010-12-24" Padding="10,2,10,2" TextBlock.Foreground="#FF006D83" TextBlock.FontWeight="Bold" />
+    </Paragraph>
+  </TableCell>
+</TableRow>

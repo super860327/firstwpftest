@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/CloseableTabItem.generic.xaml" />
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/ImageButton.generic.xaml" />
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/PromptingTextBox.generic.xaml" />
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/Accordion.generic.xaml" />
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/AccordionItem.generic.xaml" />
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/DesktopAlertBase.generic.xaml" />
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/DropDownTabControl.generic.xaml" />
+    <ResourceDictionary Source="/IDKin.IM.CustomComponents;component/Themes/MenuItem.generic.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

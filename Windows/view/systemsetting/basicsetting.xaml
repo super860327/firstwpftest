@@ -1,0 +1,10 @@
+<Canvas x:Class="IDKin.IM.Windows.View.SystemSetting.BasicSetting" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextBlock Canvas.Left="33" Canvas.Top="25" Text="启动和登录" TextBlock.Foreground="#FF008AC9" TextBlock.FontWeight="Bold" />
+  <CheckBox Name="chkBase_AutoStart" Canvas.Left="63" Canvas.Top="50" Content="开机时自动启动" Height="16" />
+  <CheckBox Name="chkBase_AutoLogin" Canvas.Left="63" Canvas.Top="75" Content="启动时为我自动登录" Height="16" />
+  <Separator Canvas.Left="33" Canvas.Top="145" Width="355" Height="1" Opacity="0.5" />
+  <TextBlock Canvas.Left="33" Canvas.Top="166" Text="主面板" TextBlock.Foreground="#FF008AC9" TextBlock.FontWeight="Bold" />
+  <RadioButton Name="rdoBase_Exit_Hide" GroupName="rdoBase" Canvas.Left="66" Canvas.Top="212" Content="隐藏到任务栏通知区域，不退出程序" Height="16" />
+  <RadioButton Name="rdoBase_Exit_ShutDown" GroupName="rdoBase" Canvas.Left="66" Canvas.Top="236" Content="退出程序" Height="16" />
+  <TextBlock Canvas.Left="63" Canvas.Top="187" Text="关闭面板时：" />
+</Canvas>

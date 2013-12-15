@@ -1,0 +1,435 @@
+  public class POP3Ssl : POP3
+    {
+        protected System.Net.Security.SslStream instream;
+
+
+        public POP3Ssl(EMailModal eMailModal)
+        {
+            this.EMailModal = eMailModal;
+            this.POPServer = eMailModal.Server;
+            this.User = eMailModal.MailID;
+            this.Pwd = eMailModal.PWD;
+        }
+        public override string TestConnect()
+        {
+            string result = string.Empty;
+            TcpClient tcpClient = null;
+            try
+            {
+                tcpClient = new TcpClient(POPServer, 995);
+                instream = new SslStream(tcpClient.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate),
+                    new LocalCertificateSelectionCallback(SelectLocalCertificate));
+
+
+                byte[] inbytes = null;
+                byte[] outbytes = null;
+                string input = string.Empty;
+                string output = string.Empty;
+
+
+                string strResult = CheckLogin(inbytes, outbytes, input, output);
+                if (!string.IsNullOrEmpty(strResult))
+                {
+                    //Show Error
+                    result = strResult;
+                }
+                //instream.AuthenticateAsClient(POPServer);
+                //outbytes = new byte[1024];  
+                //instream.Read(outbytes, 0, outbytes.Length);
+                //output = System.Text.Encoding.ASCII.GetString(outbytes);
+                //if (output.Substring(0, 4).Equals("-ERR", StringComparison.CurrentCultureIgnoreCase))
+                //{
+                //    //Host error
+                //    result = "服务器错误！";
+                //}
+
+                //input = string.Format("user {0}\r\n", User);
+                //inbytes = System.Text.Encoding.ASCII.GetBytes(input.ToCharArray());
+                //instream.Write(inbytes);
+                //outbytes = new byte[1024];
+                //instream.Read(outbytes, 0, outbytes.Length);
+                //output = System.Text.Encoding.ASCII.GetString(outbytes);
+                //if (output == null || !output.StartsWith("+OK", StringComparison.CurrentCultureIgnoreCase))
+                //{
+                //    result = "用户名错误！";
+                //}
+
+
+
+                //input = string.Format("pass {0}\r\n", Pwd);
+                //inbytes = System.Text.Encoding.ASCII.GetBytes(input.ToCharArray());
+                //instream.Write(inbytes);
+                //outbytes = new byte[1024];
+                //instream.Read(outbytes, 0, outbytes.Length);
+                //output = System.Text.Encoding.ASCII.GetString(outbytes);
+                //if (output == null || !output.StartsWith("+OK", StringComparison.CurrentCultureIgnoreCase))
+                //{
+                //    result = "密码错误！";
+                //}
+
+                Disconnect();
+            }
+            catch (SocketException)
+            {
+                result = "找不到服务器！";
+            }
+            catch (Exception ex)
+            {
+                result = ex.ToString();
+            }
+            finally
+            {
+                if (instream != null)
+                {
+                    instream.Close();
+                }
+
+                if (tcpClient != null)
+                {
+                    tcpClient.Close();
+                }
+            }
+            return result;
+
+        }
+
+        private bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        {
+            if (sslPolicyErrors == SslPolicyErrors.None)
+                return true;
+
+            Console.WriteLine("Certificate error: {0}", sslPolicyErrors);
+            return false;
+        }
+
+        private X509Certificate SelectLocalCertificate(object sender, string targetHost, X509CertificateCollection localCertificates, X509Certificate remoteCertificate, string[] acceptableIssuers)
+        {
+            if (acceptableIssuers != null && acceptableIssuers.Length > 0 && localCertificates != null && localCertificates.Count > 0)
+            {
+                foreach (X509Certificate certificate in localCertificates)
+                {
+                    string issuer = certificate.Issuer;
+                    if (Array.IndexOf(acceptableIssuers, issuer) != -1)
+                        return certificate;
+                }
+            }
+
+            if (localCertificates != null && localCertificates.Count > 0)
+                return localCertificates[0];
+            return null;
+        }
+
+        public override void Disconnect()
+        {
+
+            byte[] bytes = new byte[1024];
+            instream.Write(Encoding.ASCII.GetBytes("QUIT \r\n"));
+            bytes = new byte[1024];
+            instream.Read(bytes, 0, bytes.Length);
+
+            //if (Encoding.ASCII.GetString(bytes).StartsWith("+OK") == false)
+            //{
+
+            //}
+
+
+
+        }
+
+        private object objlock = new object();
+        public override DateTime GetLastestDateTime()
+        {
+            DateTime result;
+            if (string.IsNullOrEmpty(POPServer))
+            {
+                return DateTime.MaxValue;
+            }
+            lock (objlock)
+            {
+                DateTime dateTime;
+                DateTime LastestDateTime = DateTime.MinValue;
+                TcpClient tcpClient = null;
+
+                try
+                {
+                    tcpClient = new TcpClient(POPServer, 995);
+                    instream = new SslStream(tcpClient.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), new LocalCertificateSelectionCallback(SelectLocalCertificate));
+                    byte[] inbytes = null;
+                    byte[] outbytes = null;
+                    string input = string.Empty;
+                    string strRead = string.Empty;
+
+                    string strResult = CheckLogin(inbytes, outbytes, input, strRead);
+                    if (!string.IsNullOrEmpty(strResult))
+                    {
+                        // Show Error
+                        return DateTime.MaxValue;
+                    }
+
+                    int countmail = GetMailCount(inbytes, outbytes, input, strRead);
+
+                    for (int i = 1; i <= countmail; i++)
+                    {
+                        outbytes = new byte[1024];
+                        input = string.Format("top {0} 0\r\n", i);
+                        inbytes = System.Text.Encoding.ASCII.GetBytes(input.ToCharArray());
+                        instream.Write(inbytes, 0, inbytes.Length);
+                        strRead = string.Empty;
+                        instream.Read(outbytes, 0, outbytes.Length);
+                        strRead = System.Text.Encoding.ASCII.GetString(outbytes);
+                        if (strRead.IndexOf("date:", StringComparison.CurrentCultureIgnoreCase) > -1)
+                        {
+                            string s = strRead.Substring(strRead.IndexOf("date:", StringComparison.CurrentCultureIgnoreCase));
+                            int _index = s.IndexOf("\r\n", 0);
+                            if (_index >= 0)
+                            {
+                                s = s.Substring(0, _index);//get Date
+                            }
+
+                            try
+                            {
+                                string str = s.Substring(5);
+                                int index = str.IndexOf('(');
+                                if (index > 0)
+                                {
+                                    str = str.Remove(index);
+                                }
+                                dateTime = DateTime.Parse(str);
+                                if (s.Length > 6 && LastestDateTime.CompareTo(dateTime) <= 0)
+                                {
+                                    LastestDateTime = dateTime;
+                                }
+                            }
+                            catch (FormatException ex)
+                            {
+                                ServiceUtil.Instance.Logger.Error(ex.ToString());
+                                //ServiceUtil.Instance.Logger.Error(string.Format("{0} {1}",s,ex.ToString()));
+                            }
+                            catch (Exception ex)
+                            {
+                                ServiceUtil.Instance.Logger.Error(ex.ToString());
+                            }
+                        }
+                    }
+                    Disconnect();
+                }
+                catch (Exception ex)
+                {
+                    ServiceUtil.Instance.Logger.Error(ex.ToString());
+                    //throw;
+                }
+                finally
+                {
+                    if (instream != null)
+                    {
+                        instream.Dispose();
+                    }
+
+                    if (tcpClient != null)
+                    {
+                        tcpClient.Close();
+                    }
+                }
+                result = LastestDateTime;
+            }
+            return result;
+
+        }
+
+        private object objLock2 = new object();
+        public override int GetMailCount(DateTime dateTime)
+        {
+            File.AppendAllText("log.txt", dateTime.ToString() + Environment.NewLine);
+            
+            int result = 0;
+            if (string.IsNullOrEmpty(POPServer))
+            {
+                return 0;
+            }
+            lock (objLock2)
+            {
+                int countTmp = 0;
+                TcpClient tcpClient = null;
+                try
+                {
+                    tcpClient = new TcpClient(POPServer, 995);
+                    instream = new SslStream(tcpClient.GetStream(), false, new RemoteCertificateValidationCallback(ValidateServerCertificate), new LocalCertificateSelectionCallback(SelectLocalCertificate));
+                    Byte[] inbytes = null;
+                    Byte[] outbytes = null;
+                    string strInput = null;
+                    string strOutput = null;
+
+                    string strResult = CheckLogin(inbytes, outbytes, strInput, strOutput);
+                    if (!string.IsNullOrEmpty(strResult))
+                    {
+                        //Show Error
+                        File.AppendAllText("log.txt", Environment.NewLine);
+                        return result;
+                    }
+                    int countmail = GetMailCount(inbytes, outbytes, strInput, strOutput);
+                    MessageBox.Show("Gmail Count:" + countmail.ToString());
+                    for (int i = 1; i <= countmail; i++)
+                    {
+                        strInput = string.Format("top {0} 0\r\n", i);
+                        //将string input转化为7位的字符，以便可以在网络上传输
+                        inbytes = System.Text.Encoding.ASCII.GetBytes(strInput.ToCharArray());
+                        instream.Write(inbytes, 0, inbytes.Length);
+                        outbytes = new Byte[1024];
+                        instream.Read(outbytes, 0, outbytes.Length);
+                        strOutput = System.Text.Encoding.ASCII.GetString(outbytes);
+                        File.AppendAllText("log.txt", strOutput ?? "AA_Empty" + Environment.NewLine);
+                        if (string.IsNullOrEmpty(strOutput))
+                        {
+
+                            continue;
+                        }
+                        else if (strOutput.IndexOf("date:", StringComparison.CurrentCultureIgnoreCase) > -1)
+                        {
+                            string s = strOutput.Substring(strOutput.IndexOf("date:", StringComparison.CurrentCultureIgnoreCase));
+                            int _index = s.IndexOf("\r\n", 0);
+                            if (_index >= 0)
+                            {
+                                s = s.Substring(0, _index);//get Date
+                            }
+
+
+                            if (strOutput.Length >= 4 && strOutput.Substring(0, 4) == "-ERR")
+                            {
+                                continue;
+                            }
+
+                            try
+                            {
+                                //int length = thisResponse.Length - 4;
+                                string str = s.Substring(5);
+                                int index = str.IndexOf('(');
+                                if (index > 0)
+                                    str = str.Remove(index);
+
+                                if (s.Length > 6 && DateTime.Parse(str).CompareTo(dateTime) > 0)
+                                {
+                                    countTmp++;
+                                }
+                            }
+                            catch (FormatException)
+                            {
+                                //ServiceUtil.Instance.Logger.Error(ex.ToString());
+                                //ServiceUtil.Instance.Logger.Error(string.Format("{0} {1}", s, ex.ToString()));
+                            }
+                            catch (Exception ex)
+                            {
+                                ServiceUtil.Instance.Logger.Error(ex.ToString());
+                            }
+                        }
+                    }
+
+                    //断开与服务器的连接
+                    Disconnect();
+
+                }
+                catch (Exception ex)
+                {
+                    ServiceUtil.Instance.Logger.Error(ex.ToString());
+                }
+                finally
+                {
+                    if (instream != null)
+                    { instream.Dispose(); }
+
+                    if (tcpClient != null)
+                    {
+                        tcpClient.Close();
+                    }
+                }
+                result = countTmp;
+            }
+
+            File.AppendAllText("log.txt", Environment.NewLine);
+            return result;
+        }
+
+        private int GetMailCount(Byte[] inbytes, Byte[] outbytes, string strInput, string strOutput)
+        {
+            strInput = "stat " + "\r\n";
+            //将string input转化为7位的字符，以便可以在网络上传输
+            inbytes = System.Text.Encoding.ASCII.GetBytes(strInput.ToCharArray());
+            instream.Write(inbytes, 0, inbytes.Length);
+            outbytes = new Byte[1024];
+            instream.Read(outbytes, 0, outbytes.Length);
+            strOutput = System.Text.Encoding.ASCII.GetString(outbytes);
+
+            if (strOutput.Substring(0, 4) == "-ERR")
+            {
+                return 0;
+            }
+            string[] tmpArray;
+            //将从服务器取到的数据以“”分成字符数组
+            tmpArray = strOutput.Split(' ');
+            //断开与服务器的连接
+            //Disconnect();
+            //取到的表示邮件数目
+            int countmail = 0;
+            try
+            {
+                if (tmpArray.Length > 1)
+                {
+                    countmail = Convert.ToInt32(tmpArray[1]);
+                }
+            }
+            catch (FormatException)
+            {
+                countmail = 0;
+            }
+            return countmail;
+        }
+
+        private string CheckLogin(Byte[] inbytes, byte[] outbytes, string input, string strRead)
+        {
+            string result = string.Empty;
+            try
+            {
+                instream.AuthenticateAsClient(POPServer);
+
+                outbytes = new byte[1024];
+                instream.Read(outbytes, 0, outbytes.Length);
+                strRead = System.Text.Encoding.ASCII.GetString(outbytes);
+
+                //检查密码
+                input = "user " + User + "\r\n";
+                inbytes = System.Text.Encoding.ASCII.GetBytes(input.ToCharArray());
+                instream.Write(inbytes, 0, inbytes.Length);
+                outbytes = new byte[1024];
+                instream.Read(outbytes, 0, outbytes.Length);
+                strRead = System.Text.Encoding.ASCII.GetString(outbytes);
+                //if (strRead.IndexOf("-ERR") != -1)
+                //{
+                //    //IDKin.IM.Log.Logger logger = new Log.Logger();
+                //    //logger.Error(readpwd);
+                //    //return -1;
+                //}
+                input = "pass " + Pwd + "\r\n";
+                inbytes = System.Text.Encoding.ASCII.GetBytes(input.ToCharArray());
+                instream.Write(inbytes, 0, inbytes.Length);
+                outbytes = new byte[1024];
+                instream.Read(outbytes, 0, outbytes.Length);
+                strRead = System.Text.Encoding.ASCII.GetString(outbytes);
+                if (strRead.IndexOf("-ERR") != -1)
+                {
+                    this.EMailModal.HasError = true;
+                    result = "用户名密码有误！";
+                }
+                else
+                {
+                    this.EMailModal.HasError = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = ex.ToString();
+            }
+            //inbytes = null;
+            //outbytes = null;
+            return result;
+        }
+
+    }

@@ -1,0 +1,20 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=mscorlib">
+    <s:String x:Key="LogonWindowTitle">IDKin</s:String>
+    <s:String x:Key="LogonSettingWindowTitle">Login Settings</s:String>
+    <s:String x:Key="RememberPassword">Remember Password</s:String>
+    <s:String x:Key="LogonLabel">Login</s:String>
+    <s:String x:Key="INWindowTitle">IDKin</s:String>
+    <s:String x:Key="InLabel">IDKin</s:String>
+    <s:String x:Key="SystemSettingWindowTitle">System Setting</s:String>
+    <s:String x:Key="EntGroupManagerWindowTitle">Creating the enterprise group</s:String>
+    <s:String x:Key="IsTopText">Top Window</s:String>
+    <s:String x:Key="ClosingTipWindowTitle">Closing Tip</s:String>
+    <s:String x:Key="AboutWindowTitle">About in</s:String>
+    <s:String x:Key="RequestResultWindowTitle">Add Result</s:String>
+    <s:String x:Key="UpdateWindowTitle">Check Update</s:String>
+    <s:String x:Key="MessageCenterWindowTitle">Message Center</s:String>
+    <s:String x:Key="NotifyWindowTitle">Message alerts</s:String>
+    <s:String x:Key="MessageBoxWindowTitle">Message Box</s:String>
+</ResourceDictionary>

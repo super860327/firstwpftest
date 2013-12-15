@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="WindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+        <Setter Property="FrameworkElement.UseLayoutRounding" Value="False" />
+        <Setter Property="Control.FontFamily" Value="微软雅黑" />
+        <Setter Property="Control.FontSize" Value="12" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
+    </Style>
+    <Style x:Key="PageStyle" TargetType="{x:Type Page}">
+        <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+        <Setter Property="FrameworkElement.UseLayoutRounding" Value="False" />
+        <Setter Property="Page.FontFamily" Value="宋体" />
+        <Setter Property="Page.FontSize" Value="12" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
+    </Style>
+    <Style x:Key="LogonWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="Control.FontFamily" Value="微软雅黑" />
+        <Setter Property="Control.FontSize" Value="12" />
+        <Setter Property="Window.WindowStyle" Value="None" />
+        <Setter Property="Window.AllowsTransparency" Value="True" />
+        <Setter Property="Control.Background" Value="#00FFFFFF" />
+        <Setter Property="Window.ShowInTaskbar" Value="False" />
+        <Setter Property="Window.ResizeMode" Value="CanMinimize" />
+        <Setter Property="UIElement.AllowDrop" Value="False" />
+        <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+        <Setter Property="FrameworkElement.UseLayoutRounding" Value="False" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor" />
+    </Style>
+    <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}">
+        <Setter Property="FrameworkElement.Width" Value="60" />
+        <Setter Property="FrameworkElement.Height" Value="20" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+    </Style>
+</ResourceDictionary>

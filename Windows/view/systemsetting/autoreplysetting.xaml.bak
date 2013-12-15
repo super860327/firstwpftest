@@ -1,0 +1,44 @@
+<Canvas x:Class="IDKin.IM.Windows.View.SystemSetting.AutoReplySetting" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Canvas.Resources>
+    <Style x:Key="{x:Type ListBoxItem}" TargetType="{x:Type ListBoxItem}">
+      <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+      <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type ListBoxItem}">
+            <Border Name="Border" CornerRadius="2" Padding="2,2,2,0" SnapsToDevicePixels="True" Background="#00FFFFFF">
+              <ContentPresenter Content="{TemplateBinding ContentControl.Content}" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="UIElement.IsMouseOver" Value="True">
+                <Setter TargetName="Border" Property="Border.Background" Value="#FFF8F8D8" />
+              </Trigger>
+              <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                <Setter TargetName="Border" Property="Border.Background" Value="#FFD4FDCC" />
+              </Trigger>
+              <MultiTrigger>
+                <MultiTrigger.Conditions>
+                  <Condition Property="ListBoxItem.IsSelected" Value="True" />
+                  <Condition Property="UIElement.IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="Border" Property="Border.Background" Value="#FFE8E8E8" />
+              </MultiTrigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Canvas.Resources>
+  <Label Canvas.Left="33" Canvas.Top="20" Content="自动回复" Foreground="#FF008AC9" FontWeight="Bold" />
+  <CheckBox Name="chkAutoReply" Canvas.Left="63" Canvas.Top="53" Content="离开时自动回复（100字以内）" Height="16" />
+  <ListBox Name="lbAutoReplyContent" Canvas.Left="63" Canvas.Top="81" Height="126" Width="245" />
+  <Button Name="btnAutoReplyAdd" Canvas.Left="313" Canvas.Top="81" Content="添加" Width="60" Height="22" Style="{DynamicResource NormalButtonStyle}" />
+  <Button Name="btnAutoReplyEdit" Canvas.Left="313" Canvas.Top="110" Content="修改" Width="60" Height="22" Style="{DynamicResource NormalButtonStyle}" />
+  <Button Name="btnAutoReplyDelete" Canvas.Left="313" Canvas.Top="139" Content="删除" Width="60" Height="22" Style="{DynamicResource NormalButtonStyle}" />
+  <TextBlock Canvas.Left="33" Canvas.Top="236" TextBlock.Foreground="#FF008AC9" TextBlock.FontWeight="Bold" Text="自定义设置" />
+  <TextBlock Canvas.Left="63" Canvas.Top="260" Text="自定义设置回复（50字以内）" />
+  <ComboBox Name="cbxFastReply" Canvas.Left="236" Canvas.Top="256" Height="22" Width="72" IsEditable="True" IsReadOnly="True" />
+  <TextBox Name="tbxFastReply" Canvas.Left="63" Canvas.Top="284" Height="70" Width="245" TextWrapping="Wrap" MaxLength="50" />
+  <Button Name="btnFastReplyAdd" Canvas.Left="313" Canvas.Top="284" Content="添加" Height="22" Width="60" Style="{DynamicResource NormalButtonStyle}" />
+  <Button Name="btnFastReplyDelete" Canvas.Left="313" Canvas.Top="312" Content="删除" Height="22" Width="60" Style="{DynamicResource NormalButtonStyle}" />
+</Canvas>

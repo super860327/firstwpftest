@@ -1,0 +1,5 @@
+<Canvas x:Class="IDKin.IM.Windows.View.SystemSetting.MessageNotifySetting" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Label Canvas.Left="33" Canvas.Top="20" Content="消息提醒" Foreground="#FF008AC9" FontWeight="Bold" />
+  <Label Canvas.Left="63" Canvas.Top="50" Content="你可以设置开启不同类型的消息提醒框，点击可切换[状态]" />
+  <CheckBox Name="chkShowMessageBox" Canvas.Left="70" Canvas.Top="80" Content="弹出聊天消息盒子" />
+</Canvas>

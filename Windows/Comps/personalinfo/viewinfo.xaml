@@ -1,0 +1,95 @@
+<UserControl x:Class="IDKin.IM.Windows.Comps.PersonalInfo.ViewInfo" Width="Auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <UserControl.Resources>
+    <Style x:Key="LeftTextStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="TextBlock.TextAlignment" Value="Right" />
+      <Setter Property="FrameworkElement.Margin" Value="0,5,0,5" />
+      <Setter Property="FrameworkElement.VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="RightTextStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="TextBlock.TextAlignment" Value="Left" />
+      <Setter Property="FrameworkElement.Margin" Value="0,5,0,5" />
+      <Setter Property="FrameworkElement.HorizontalAlignment" Value="Left" />
+      <Setter Property="FrameworkElement.VerticalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="TitleTextStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="TextBlock.TextAlignment" Value="Center" />
+      <Setter Property="FrameworkElement.Margin" Value="0,10,0,10" />
+      <Setter Property="TextBlock.FontWeight" Value="Bold" />
+      <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center" />
+      <Setter Property="FrameworkElement.VerticalAlignment" Value="Center" />
+    </Style>
+  </UserControl.Resources>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="70" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Top" Margin="10,10,0,0">
+      <TextBlock Name="tbkUsername" Style="{StaticResource RightTextStyle}" TextBlock.FontWeight="Bold" />
+      <TextBlock Name="tbkkinID" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkLevel" ToolTip="等级" Visibility="Collapsed" />
+    </StackPanel>
+    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
+      <TextBlock Text="昵    称:" Style="{StaticResource LeftTextStyle}" Margin="0,35,0,0" />
+      <TextBlock Text="真实姓名:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="性    别:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="个性签名:" Style="{StaticResource LeftTextStyle}" />
+    </StackPanel>
+    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
+      <TextBlock Name="tbknickname" Style="{StaticResource RightTextStyle}" Margin="0,35,0,0" />
+      <TextBlock Name="tbkrealname" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkSex" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbksignature" Width="336" TextWrapping="Wrap" Style="{StaticResource RightTextStyle}" />
+    </StackPanel>
+    <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
+      <TextBlock Text="基本资料" Style="{StaticResource TitleTextStyle}" />
+      <TextBlock Text="公历生日:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="年    龄:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="生    肖:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="星    座:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="血    型:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="国家/地区:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="省    份:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="城    市:" Style="{StaticResource LeftTextStyle}" />
+    </StackPanel>
+    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
+      <Rectangle Height="1" Stroke="#FF7DB6CB" Stretch="Fill" VerticalAlignment="Center" Margin="0,18,0,15" Width="{Binding ElementName=tbksignature, Path=Width}" />
+      <TextBlock Name="tbkBirthday" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkAge" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkZodiac" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkConstellation" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkBloodType" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkCountry" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkProvince" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkCity" Style="{StaticResource RightTextStyle}" />
+    </StackPanel>
+    <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
+      <TextBlock Text="更多资料" Style="{StaticResource TitleTextStyle}" />
+      <TextBlock Text="手    机:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="电    话:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="分机号:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="邮    箱:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="职    业:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="毕业学校:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="个人主页:" Style="{StaticResource LeftTextStyle}" />
+      <TextBlock Text="个人说明:" Style="{StaticResource LeftTextStyle}" />
+    </StackPanel>
+    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
+      <Rectangle Height="1" Stroke="#FF7DB6CB" Stretch="Fill" VerticalAlignment="Center" Margin="0,18,0,15" Width="{Binding ElementName=tbksignature, Path=Width}" />
+      <TextBlock Name="tbkMobile" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkPhone" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkExtension" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkEmail" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkProfessional" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkSchool" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkHome" Style="{StaticResource RightTextStyle}" />
+      <TextBlock Name="tbkDescription" Style="{StaticResource RightTextStyle}" TextWrapping="Wrap" Width="{Binding ElementName=tbksignature, Path=Width}" />
+    </StackPanel>
+  </Grid>
+</UserControl>

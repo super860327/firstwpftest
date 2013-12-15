@@ -1,0 +1,3 @@
+<TreeViewItem x:Class="IDKin.IM.Windows.Comps.RecentLinkListItem" Style="{DynamicResource TreeViewItemStyle}" 
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"></TreeViewItem>

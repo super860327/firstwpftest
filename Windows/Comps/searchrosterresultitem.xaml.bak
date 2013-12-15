@@ -1,0 +1,43 @@
+<ListViewItem x:Class="IDKin.IM.Windows.Comps.SearchResultItem" VerticalAlignment="Center" Style="{DynamicResource ListViewItemStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ListViewItem.Resources>
+    <Style x:Key="ListViewItemStyle" TargetType="{x:Type ListViewItem}">
+      <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+      <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+      <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type ListViewItem}">
+            <Border Name="Border" CornerRadius="2" Padding="1" BorderThickness="0" SnapsToDevicePixels="True" Background="#00FFFFFF">
+              <ContentPresenter Content="{TemplateBinding ContentControl.Content}" VerticalAlignment="Center" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="UIElement.IsMouseOver" Value="True">
+                <Setter TargetName="Border" Property="Border.Background" Value="#FFF8F8D8" />
+              </Trigger>
+              <Trigger Property="ListBoxItem.IsSelected" Value="True">
+                <Setter TargetName="Border" Property="Border.Background" Value="#FFD4FDCC" />
+              </Trigger>
+              <MultiTrigger>
+                <MultiTrigger.Conditions>
+                  <Condition Property="ListBoxItem.IsSelected" Value="True" />
+                  <Condition Property="UIElement.IsMouseOver" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter TargetName="Border" Property="Border.Background" Value="#FFE8E8E8" />
+              </MultiTrigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </ListViewItem.Resources>
+  <Canvas Name="canvas" Height="75" Width="425">
+    <Image Name="imgHead" Canvas.Left="8" Canvas.Top="16" Height="40" Width="40" Stretch="Fill" />
+    <TextBlock Name="tbkId" Canvas.Left="60" Canvas.Top="18" Text="犀利[415]" />
+    <TextBlock Name="tbkSex" Canvas.Left="60" Canvas.Top="38" Text="女" />
+    <TextBlock Name="tbkAge" Canvas.Left="86" Canvas.Top="38" Text="22" />
+    <TextBlock Name="tbkAddress" Canvas.Left="115" Canvas.Top="38" Text="广东 深圳" />
+    <TextBlock Name="tbkPost" Canvas.Left="200" Canvas.Top="38" Text="平面设计" />
+    <Button Name="btnAddFriend" Canvas.Left="353" Canvas.Top="12" Content="添加好友" Height="20" Width="60" />
+    <Button Name="btnViewInfo" Canvas.Left="353" Canvas.Top="38" Content="查看资料" Height="20" Width="60" />
+  </Canvas>
+</ListViewItem>

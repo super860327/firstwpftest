@@ -1,0 +1,12 @@
+<UserControl x:Class="IDKin.IM.Windows.Comps.AddressComponent" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Canvas Name="content">
+        <TextBlock Canvas.Left="0" Canvas.Top="0" Text="国家/地区:" />
+        <TextBlock Canvas.Left="110" Canvas.Top="0" Text="省份:" />
+        <TextBlock Canvas.Left="260" Canvas.Top="0" Text="城市:" />
+        <ComboBox Name="cmbCountry" Canvas.Left="0" Canvas.Top="21" Width="85" IsEditable="True" IsReadOnly="True" BorderBrush="#FF7A7A7A" SelectionChanged="cmbCountry_SelectionChanged_1" />
+        <ComboBox Name="cmbProvince" Canvas.Left="110" Canvas.Top="21" Width="125" IsEditable="True" IsReadOnly="True" BorderBrush="#FF7A7A7A" SelectionChanged="cmbProvince_SelectionChanged_1" />
+        <ComboBox Name="cmbCity" Canvas.Left="260" Canvas.Top="21" Width="115" IsEditable="True" IsReadOnly="True" BorderBrush="#FF7A7A7A" />
+    </Canvas>
+</UserControl>

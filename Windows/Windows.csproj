@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{9B3C8FD1-2D4C-490C-A103-6AD8E5B214A8}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>IDKin.IM.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="protobuf-net">
+      <HintPath>..\dll\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.XML" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="IDKin.IM.Core">
+      <HintPath>..\dll\IDKin.IM.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="CaptureImageTool">
+      <HintPath>..\dll\CaptureImageTool.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Deployment" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Comps\chattab\BaseTab.cs" />
+    <Compile Include="Comps\personalinfo\BasicInfo.xaml.cs">
+      <DependentUpon>basicinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\personalinfo\IShowInfo.xaml.cs">
+      <DependentUpon>ishowinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\personalinfo\MoreInfo.xaml.cs">
+      <DependentUpon>moreinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\personalinfo\ViewInfo.xaml.cs">
+      <DependentUpon>viewinfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\TabItemHeaderControl.xaml.cs">
+      <DependentUpon>TabItemHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BindingVO\LogOnMsg.cs" />
+    <Compile Include="BindingVO\RequestResultVO.cs" />
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Comps\collaboration\CoopStaffTab.xaml.cs">
+      <DependentUpon>CoopStaffTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\chattab\EntGroupTab.xaml.cs">
+      <DependentUpon>EntGroupTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\chattab\EntStaffTab.xaml.cs">
+      <DependentUpon>EntStaffTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\chattab\RosterTab.xaml.cs">
+      <DependentUpon>RosterTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\filetransport\OpenFileControl.xaml.cs">
+      <DependentUpon>OpenFileControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\FileReadWrite.xaml.cs" />
+    <Compile Include="Comps\messagecenter\MarkedRecordItem.xaml.cs">
+      <DependentUpon>markedrecorditem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\MarkedRecordPage.xaml.cs">
+      <DependentUpon>markedrecordpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\MarkedTreeView.xaml.cs">
+      <DependentUpon>markedtreeview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\MsgCenterTreeNode.xaml.cs">
+      <DependentUpon>MsgCenterTreeNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\MsgRecordItem.xaml.cs">
+      <DependentUpon>msgrecorditem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\MsgRecordPage.xaml.cs">
+      <DependentUpon>msgrecordpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\OANoticeListView.xaml.cs">
+      <DependentUpon>oanoticelistview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\OANoticeRecordDateRow.xaml.cs">
+      <DependentUpon>oanoticerecorddaterow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\OANoticeRecordItem.xaml.cs">
+      <DependentUpon>oanoticerecorditem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\OANoticeRecordPage.xaml.cs">
+      <DependentUpon>oanoticerecordpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\RecentContactsItem.xaml.cs">
+      <DependentUpon>recentcontactsitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\RecentContactsPage.xaml.cs">
+      <DependentUpon>recentcontactspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\SavedRecordItem.xaml.cs">
+      <DependentUpon>savedrecorditem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\SavedRecordPage.xaml.cs">
+      <DependentUpon>savedrecordpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\messagecenter\WorkTreeView.xaml.cs">
+      <DependentUpon>worktreeview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemFive.xaml.cs">
+      <DependentUpon>dynamicworkitemfive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemFiveStyle.xaml.cs" />
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemFour.xaml.cs">
+      <DependentUpon>dynamicworkitemfour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemFourStyle.xaml.cs" />
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemNine.xaml.cs">
+      <DependentUpon>dynamicworkitemnine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemNineStyle.xaml.cs" />
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemSeven.xaml.cs">
+      <DependentUpon>dynamicworkitemseven.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemSevenStyle.xaml.cs" />
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemSix.xaml.cs">
+      <DependentUpon>dynamicworkitemsix.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemSixStyle.xaml.cs" />
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemTen.xaml.cs">
+      <DependentUpon>dynamicworkitemten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemTenStyle.xaml.cs" />
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemTwelve.xaml.cs">
+      <DependentUpon>dynamicworkitemtwelve.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\DynamicWorkItemTwelveStyle.xaml.cs" />
+    <Compile Include="Comps\oa\currentwork\OAAllCurrentWork.xaml.cs">
+      <DependentUpon>oaallcurrentwork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\currentwork\OAAllCurrentWorkDateRow.xaml.cs">
+      <DependentUpon>oaallcurrentworkdaterow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\OACurrentWorkControl.xaml.cs">
+      <DependentUpon>oacurrentworkcontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\OANoticeTabItem.xaml.cs">
+      <DependentUpon>oanoticetabitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\OAPlanTabItem.xaml.cs">
+      <DependentUpon>oaplantabitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\oa\OAWorkflowTabItem.xaml.cs">
+      <DependentUpon>oaworkflowtabitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps.PersonalInfo.Validation\BirthdayValidationRule.cs" />
+    <Compile Include="Comps.PersonalInfo.Validation\EmailValidationRule.cs" />
+    <Compile Include="Comps.PersonalInfo.Validation\RealNameValidationRule.cs" />
+    <Compile Include="Comps\AddressComponent.xaml.cs">
+      <DependentUpon>AddressComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\BaseWindow.cs" />
+    <Compile Include="Comps\ChatComponent.xaml.cs">
+      <DependentUpon>chatcomponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\CloseButton.xaml.cs">
+      <DependentUpon>closebutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\CollaborationNodeStaff.xaml.cs" />
+    <Compile Include="Comps\CollaborationTabItem.xaml.cs" />
+    <Compile Include="Comps\CollaborationTreeViewItem.xaml.cs" />
+    <Compile Include="Comps\CoopStaffChatTabControl.xaml.cs" />
+    <Compile Include="Comps\CustomerTabItem.xaml.cs">
+      <DependentUpon>customertabitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\CustomGroupHandler.xaml.cs" />
+    <Compile Include="Comps\CustomGroupTreeViewItem.xaml.cs">
+      <DependentUpon>customgrouptreeviewitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\CustomMemberItem.xaml.cs">
+      <DependentUpon>custommemberitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\CustomMemberType.xaml.cs" />
+    <Compile Include="Comps\CustomProgressBar.xaml.cs" />
+    <Compile Include="Comps\DepartmentTreeView.xaml.cs">
+      <DependentUpon>departmenttreeview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\EmployeeTabItem.xaml.cs">
+      <DependentUpon>employeetabitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\EnterpriseGroupListView.xaml.cs">
+      <DependentUpon>enterprisegrouplistview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\FacePanel.xaml.cs">
+      <DependentUpon>facepanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\FastReplyPopup.xaml.cs">
+      <DependentUpon>fastreplypopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\FileTransmitList.xaml.cs">
+      <DependentUpon>filetransmitlist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\FriendsChatTabControl.xaml.cs">
+      <DependentUpon>friendschattabcontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\FriendsList.xaml.cs">
+      <DependentUpon>friendslist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\GroupChatTabControl.xaml.cs">
+      <DependentUpon>groupchattabcontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\GroupMemberControl.xaml.cs">
+      <DependentUpon>groupmembercontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\GroupMemberListView.xaml.cs">
+      <DependentUpon>groupmemberlistview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\GroupNodeStaff.xaml.cs">
+      <DependentUpon>groupnodestaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\IconButton.xaml.cs">
+      <DependentUpon>iconbutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\IDKinFlowDocument.xaml.cs">
+      <DependentUpon>idkinflowdocument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\IDKinWrapPanel2.xaml.cs">
+      <DependentUpon>idkinwrappanel2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\ImageButton.xaml.cs">
+      <DependentUpon>imagebutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\ImageControl.xaml.cs">
+      <DependentUpon>imagecontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\ImageSplitButton.xaml.cs">
+      <DependentUpon>imagesplitbutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\IShowPanel.xaml.cs">
+      <DependentUpon>ishowpanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\ItemGroup.xaml.cs">
+      <DependentUpon>itemgroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\LinkButton.xaml.cs" />
+    <Compile Include="Comps\LogonPanel.xaml.cs">
+      <DependentUpon>logonpanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\MaxButton.xaml.cs">
+      <DependentUpon>maxbutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\MessageBoxItem.xaml.cs">
+      <DependentUpon>messageboxitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\MinButton.xaml.cs">
+      <DependentUpon>minbutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\MsgRecordComponent.xaml.cs">
+      <DependentUpon>msgrecordcomponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\NewFileListItem.xaml.cs">
+      <DependentUpon>newfilelistitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\PersonalChatTabControl.xaml.cs">
+      <DependentUpon>personalchattabcontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\Personalminicards.xaml.cs">
+      <DependentUpon>personalminicards.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\PopupList.xaml.cs">
+      <DependentUpon>popuplist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\PromptingPasswordBox.xaml.cs">
+      <DependentUpon>promptingpasswordbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\RecentLinkListItem.xaml.cs">
+      <DependentUpon>recentlinklistitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\RecentLinkNode.xaml.cs">
+      <DependentUpon>recentlinknode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\RecentLinkType.xaml.cs" />
+    <Compile Include="Comps\ScreenshotPopup.xaml.cs">
+      <DependentUpon>screenshotpopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\SearchNodeStaff.xaml.cs">
+      <DependentUpon>searchnodestaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\SearchPopupList.xaml.cs">
+      <DependentUpon>searchpopuplist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\SearchResultItem.xaml.cs" />
+    <Compile Include="Comps\SelfDepartment.xaml.cs">
+      <DependentUpon>selfdepartment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\SelfDepartmentStaffNode.xaml.cs">
+      <DependentUpon>selfdepartmentstaffnode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\SendStylePopup.xaml.cs">
+      <DependentUpon>sendstylepopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\SplitButton.xaml.cs">
+      <DependentUpon>splitbutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\StatusButton.xaml.cs">
+      <DependentUpon>statusbutton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\SuppliersTabItem.xaml.cs">
+      <DependentUpon>supplierstabitem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\TreeNodeCustomStaff.xaml.cs">
+      <DependentUpon>treenodecustomstaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\TreeNodeRoster.xaml.cs">
+      <DependentUpon>treenoderoster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\TreeNodeStaff.xaml.cs">
+      <DependentUpon>treenodestaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\TreeNodeStaffHead.xaml.cs">
+      <DependentUpon>treenodestaffhead.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Comps\WorkDesktopControl.xaml.cs">
+      <DependentUpon>workdesktopcontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess.DynamicWork\BaseDynamicWorkObjAddedEventArgs.cs" />
+    <Compile Include="DataAccess.DynamicWork\BaseDynamicWorkObjRepository.cs" />
+    <Compile Include="Helper\AutoHideHelper.cs" />
+    <Compile Include="Helper\Win32Helper.cs" />
+    <Compile Include="Model.MessageCenter\MessageCenterChatInfo.cs" />
+    <Compile Include="Model.OA\OANoticeData.cs" />
+    <Compile Include="Model.OA\OAPlanData.cs" />
+    <Compile Include="Model.OA\OAWorkflowData.cs" />
+    <Compile Include="Model.RecentLink\RecentLinkInfo.cs" />
+    <Compile Include="Model\DataModel.cs" />
+    <Compile Include="Model\WindowModel.cs" />
+    <Compile Include="IDKin.IM.Windows.Properties\Resources.cs" />
+    <Compile Include="IDKin.IM.Windows.Properties\Settings.cs" />
+    <Compile Include="Util\AppUtil.cs" />
+    <Compile Include="Util\BrowserUtil.cs" />
+    <Compile Include="Util\ControlBox.cs" />
+    <Compile Include="Util\FlashWindowHelper.cs" />
+    <Compile Include="Util\HookEventArgs.cs" />
+    <Compile Include="Util\LocalDataUtil.cs" />
+    <Compile Include="Util\NotifyIconUtil.cs" />
+    <Compile Include="Util\SearchUtil.cs" />
+    <Compile Include="Util\ServiceUtil.cs" />
+    <Compile Include="Util\ShellExecuteUtil.cs" />
+    <Compile Include="Util\TaskBarUtil.cs" />
+    <Compile Include="Util\ValidationUtil.cs" />
+    <Compile Include="Util\Win32.cs" />
+    <Compile Include="view\addfriends\AddFriendWindow.cs">
+      <DependentUpon>AddFriendWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\addfriends\FriendRequestWindow.cs">
+      <DependentUpon>FriendRequestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\addfriends\RequestResultWindow.cs">
+      <DependentUpon>RequestResultWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\addfriends\SearchResultWindow.cs">
+      <DependentUpon>SearchResultWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\addfriends\SearchRosterWindow.cs">
+      <DependentUpon>SearchRosterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View.Commons\Alert.cs" />
+    <Compile Include="View.Commons\AlertData.cs" />
+    <Compile Include="View.Commons\AlertWindow.cs" />
+    <Compile Include="View.Commons\CanvasCustom.cs" />
+    <Compile Include="View.Commons\PromptWindow.cs" />
+    <Compile Include="View.Commons\PromptWindowEnter.cs" />
+    <Compile Include="View.Commons\UserHeaderWindow.cs" />
+    <Compile Include="view\emailalert\CommonEmailItem.cs">
+      <DependentUpon>CommonEmailItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\EmailAccountItem.cs">
+      <DependentUpon>EmailAccountItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\EmailAccountItemType.cs">
+      <DependentUpon>EmailAccountItemType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\EmailServerInfo.cs">
+      <DependentUpon>EmailServerInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\EntCustomEmailItem.cs">
+      <DependentUpon>EntCustomEmailItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\EnterpriseEmailItem.cs">
+      <DependentUpon>EnterpriseEmailItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\POP3.cs" />
+    <Compile Include="view\emailalert\POP3Normal.cs" />
+    <Compile Include="view\emailalert\POP3Ssl.cs" />
+    <Compile Include="view\emailalert\PopMailFactory.cs" />
+    <Compile Include="view\emailalert\Setting.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\SettingEmailAccountWindow.cs">
+      <DependentUpon>SettingEmailAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\emailalert\ValueText.cs" />
+    <Compile Include="view\emailalert\ViewEmailAlertPopup.cs">
+      <DependentUpon>ViewEmailAlertPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\CooperationUserProfilePage.cs">
+      <DependentUpon>CooperationUserProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\SelfProfilePage.cs">
+      <DependentUpon>SelfProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\pages\UserProfilePage.cs">
+      <DependentUpon>UserProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\systemsetting\AutoReplySetting.cs">
+      <DependentUpon>AutoReplySetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\systemsetting\BasicSetting.cs">
+      <DependentUpon>BasicSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\systemsetting\FileTransmitSetting.cs">
+      <DependentUpon>FileTransmitSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\systemsetting\HotkeySetting.cs">
+      <DependentUpon>HotkeySetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\systemsetting\MessageNotifySetting.cs">
+      <DependentUpon>MessageNotifySetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AllBaseDynamicWorkObjViewModel.cs" />
+    <Compile Include="ViewModel\BaseDynamicWorkObjViewModel.cs" />
+    <Compile Include="ViewModel\ChatTabControlViewModel.cs" />
+    <Compile Include="ViewModel\CooperationProjectViewModel.cs" />
+    <Compile Include="ViewModel\CustomGroupManagerWindowViewModel.cs" />
+    <Compile Include="ViewModel\EmailManagerViewModel.cs" />
+    <Compile Include="ViewModel\EntGroupManagerWindowViewModel.cs" />
+    <Compile Include="ViewModel\INViewModel.cs" />
+    <Compile Include="ViewModel\ItemGroupViewModel.cs" />
+    <Compile Include="ViewModel\LogonPanelViewModel.cs" />
+    <Compile Include="ViewModel\MessageCenterViewModel.cs" />
+    <Compile Include="ViewModel\NewFileListItemViewModel.cs" />
+    <Compile Include="ViewModel\RosterViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="view\AboutWindow.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\AddMemberCustomGroupWindow.cs">
+      <DependentUpon>AddMemberCustomGroupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\ClosingTipWindow.cs">
+      <DependentUpon>ClosingTipWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\EntGroupManagerWindow.cs">
+      <DependentUpon>EntGroupManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\INWindow.cs">
+      <DependentUpon>INWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\LogonSettingWindow.cs">
+      <DependentUpon>LogonSettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\LogonWindow.cs">
+      <DependentUpon>LogonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\MessageBoxWindow.cs">
+      <DependentUpon>MessageBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\MessageCenterWindow.cs">
+      <DependentUpon>MessageCenterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\NotifyWindow.cs">
+      <DependentUpon>NotifyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\SystemSettingWindow.cs">
+      <DependentUpon>SystemSettingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\SystemWindow.cs">
+      <DependentUpon>SystemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\UpdateWindow.cs">
+      <DependentUpon>UpdateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\UsageGuideWindow.cs">
+      <DependentUpon>UsageGuideWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\UsageGuideWindowSub.cs">
+      <DependentUpon>UsageGuideWindowSub.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IDKin.IM.Windows.Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Comps\AddressComponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\chatcomponent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\chattab\EntGroupTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\chattab\EntStaffTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\chattab\RosterTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\closebutton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\collaboration\collaborationnodestaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\collaboration\collaborationtabitem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\collaboration\collaborationtreeviewitem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\linkbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\pages\cooperationuserprofilepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\collaboration\coopstaffchattabcontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\collaboration\CoopStaffTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\collaboration\customprogressbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\commons\alertwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\commons\promptwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\commons\userheaderwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\customertabitem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\customgrouptreeviewitem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\custommemberitem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\departmenttreeview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\employeetabitem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\enterprisegrouplistview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\facepanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\fastreplypopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\filetransmitlist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\filetransport\OpenFileControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\friendschattabcontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\friendslist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\groupchattabcontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\groupmembercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\groupmemberlistview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\groupnodestaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\iconbutton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\idkinflowdocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\TabItemHeaderControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Comps\idkinwrappanel2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\imagebutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\imagecontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\imagesplitbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\ishowpanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\itemgroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\logonpanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\maxbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messageboxitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\markedrecorditem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\markedrecordpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\markedtreeview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\MsgCenterTreeNode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\msgrecorditem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\msgrecordpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\oanoticelistview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\oanoticerecorddaterow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\oanoticerecorditem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\oanoticerecordpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\recentcontactsitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\recentcontactspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\savedrecorditem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\savedrecordpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\messagecenter\worktreeview.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\minbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\msgrecordcomponent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\newfilelistitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\dynamicworkitemfive.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\dynamicworkitemfour.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\dynamicworkitemnine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\dynamicworkitemseven.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\dynamicworkitemsix.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\dynamicworkitemten.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\dynamicworkitemtwelve.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\oaallcurrentwork.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\currentwork\oaallcurrentworkdaterow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\oacurrentworkcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\oanoticetabitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\oaplantabitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\oa\oaworkflowtabitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\personalchattabcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\personalinfo\basicinfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\personalinfo\ishowinfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\personalinfo\moreinfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\personalinfo\viewinfo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\personalminicards.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\popuplist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\promptingpasswordbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\recentlinklistitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\recentlinknode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\screenshotpopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\searchnodestaff.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\searchpopuplist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\searchrosterresultitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\selfdepartment.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\selfdepartmentstaffnode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\sendstylepopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\splitbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\statusbutton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\supplierstabitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\treenodecustomstaff.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\treenoderoster.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\treenodestaff.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\treenodestaffhead.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Comps\workdesktopcontrol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="Resources\data\chinese.txt" />
+    <Resource Include="Resources\globalresource.xaml" />
+    <Resource Include="Resources\icon\addicon.png" />
+    <Resource Include="Resources\icon\addpositionicon.png" />
+    <Resource Include="Resources\icon\allreceivedicon.png" />
+    <Resource Include="Resources\icon\clearscreenicon.png" />
+    <Resource Include="Resources\icon\deleteicon.png" />
+    <Resource Include="Resources\icon\dropdownicon.png" />
+    <Resource Include="Resources\icon\emailaccountinvalidicon.png" />
+    <Resource Include="Resources\icon\emailicon.png" />
+    <Resource Include="Resources\icon\expandicon.png" />
+    <Resource Include="Resources\icon\gifticon.png" />
+    <Resource Include="Resources\icon\groupheadericon.ico" />
+    <Resource Include="Resources\icon\groupshieldicon.png" />
+    <Resource Include="Resources\icon\helpicon.png" />
+    <Resource Include="Resources\icon\ico16.png" />
+    <Resource Include="Resources\icon\ico_16.png" />
+    <Resource Include="Resources\icon\important.png" />
+    <Resource Include="Resources\icon\istopicon.png" />
+    <Resource Include="Resources\icon\mainmenuicon.png" />
+    <Resource Include="Resources\icon\mibasicsettingicon.png" />
+    <Resource Include="Resources\icon\miexiticon.png" />
+    <Resource Include="Resources\icon\mihelpicon.png" />
+    <Resource Include="Resources\icon\misyssettingicon.png" />
+    <Resource Include="Resources\icon\msgtitleicon.png" />
+    <Resource Include="Resources\icon\notifyicon.ico" />
+    <Resource Include="Resources\icon\notifyicon_empty.ico" />
+    <Resource Include="Resources\icon\notifyicon_gray.ico" />
+    <Resource Include="Resources\icon\projectinfo.png" />
+    <Resource Include="Resources\icon\receiveicon.png" />
+    <Resource Include="Resources\icon\removeallicon.png" />
+    <Resource Include="Resources\icon\saveallicon.png" />
+    <Resource Include="Resources\icon\screenshotsicon.png" />
+    <Resource Include="Resources\icon\searchicon.png" />
+    <Resource Include="Resources\icon\sendericon.png" />
+    <Resource Include="Resources\icon\sendfileicon.png" />
+    <Resource Include="Resources\icon\sendimageicon.png" />
+    <Resource Include="Resources\icon\settingicon.png" />
+    <Resource Include="Resources\icon\shakeicon.png" />
+    <Resource Include="Resources\icon\speaker.ico" />
+    <Resource Include="Resources\icon\themeicon.png" />
+    <Resource Include="Resources\icon\unexpandicon.png" />
+    <Resource Include="Resources\icon\urgent.png" />
+    <Resource Include="Resources\icon\viewmsgtipicon.png" />
+    <Resource Include="Resources\Image\aboutheadbg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\closeover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\closepress.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\findcontact.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\head.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\imgadvertise.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\inicon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\ishowfemale.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\ishowmale.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\lbuttonnormal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\lbuttonover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\lbuttonpress.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\lefthide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\leftshow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\logobg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\logonbg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\max.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\maxover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\maxpress.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\min.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\minover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\minpress.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\oadetailtooltipbg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\officepurchasingicon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\restore.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\restoreover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\restorepress.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\topglowbg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\trianglehideborder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Image\winbg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\messageboxicon\error.png" />
+    <Resource Include="Resources\messageboxicon\error48.png" />
+    <Resource Include="Resources\messageboxicon\exclamation48.png" />
+    <Resource Include="Resources\messageboxicon\infomation.png" />
+    <Resource Include="Resources\messageboxicon\information48.png" />
+    <Resource Include="Resources\messageboxicon\normal.png" />
+    <Resource Include="Resources\messageboxicon\question.png" />
+    <Resource Include="Resources\messageboxicon\question48.png" />
+    <Resource Include="Resources\messageboxicon\warning.png" />
+    <Resource Include="Resources\tabitem\hflashing.png" />
+    <Resource Include="Resources\tabitem\hhover.png" />
+    <Resource Include="Resources\tabitem\hnormal.png" />
+    <Resource Include="Resources\tabitem\hpress.png" />
+    <Resource Include="Resources\tabitem\vhover.png" />
+    <Resource Include="Resources\tabitem\vnormal.png" />
+    <Resource Include="Resources\tabitem\vpress.png" />
+    <Resource Include="Resources\usageguide\usageguidebg.png" />
+    <Resource Include="Resources\usageguide\usageguidebutton.png" />
+    <Page Include="view\aboutwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\addfriends\addfriendwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\addfriends\friendrequestwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\addfriends\requestresultwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\addfriends\searchresultwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\addfriends\searchrosterwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\addmembercustomgroupwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\closingtipwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\emailalert\commonemailitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\emailalert\emailaccountitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\emailalert\entcustomemailitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\emailalert\enterpriseemailitem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\emailalert\settingemailaccountwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\emailalert\viewemailalertpopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\entgroupmanagerwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\inwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\logonsettingwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\logonwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\messageboxwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\messagecenterwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\notifywindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\pages\selfprofilepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\pages\userprofilepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\systemsettingwindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\systemsetting\autoreplysetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\systemsetting\basicsetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\systemsetting\filetransmitsetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\systemsetting\hotkeysetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\systemsetting\messagenotifysetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\systemwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\updatewindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\usageguidewindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\usageguidewindowsub.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomComponents\CustomComponents.csproj">
+      <Project>{67dcd8e3-bdd1-4fe8-b54f-80980aadac45}</Project>
+      <Name>CustomComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Themes\Theme.csproj">
+      <Project>{d2ec1a69-c50a-419d-a048-c5465e99fee9}</Project>
+      <Name>Theme</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

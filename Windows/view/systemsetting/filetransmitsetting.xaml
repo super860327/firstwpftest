@@ -1,0 +1,6 @@
+<Canvas x:Class="IDKin.IM.Windows.View.SystemSetting.FileTransmitSetting" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Label Canvas.Left="33" Canvas.Top="20" Content="文件传输" Foreground="#FF008AC9" FontWeight="Bold" />
+  <Label Canvas.Left="63" Canvas.Top="50" Content="默认把接收到的文件保存到此文件夹中：" />
+  <TextBox Name="txtFileTransportSaveDir" Canvas.Left="63" Canvas.Top="80" Width="208" Height="23" IsEnabled="False" />
+  <Button Name="btnScan" Canvas.Left="274" Canvas.Top="79" Width="45" Height="22" Content="浏览..." Style="{DynamicResource NormalButtonStyle}" />
+</Canvas>

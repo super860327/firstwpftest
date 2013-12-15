@@ -1,0 +1,4 @@
+<bt:BaseTab x:Class="IDKin.IM.Windows.Comps.ChatTab.EntStaffTab" 
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+            xmlns:bt="clr-namespace:IDKin.IM.Windows.Comps.ChatTab"></bt:BaseTab>

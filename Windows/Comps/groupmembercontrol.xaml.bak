@@ -1,0 +1,45 @@
+<UserControl x:Class="IDKin.IM.Windows.Comps.GroupMemberControl" Width="168" Background="#00FFFFFF" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ib="clr-namespace:IDKin.IM.Windows.Comps">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="22" />
+      <RowDefinition Name="GroupDescriptionRow" Height="160" />
+      <RowDefinition Name="SearchRow" Height="22" />
+      <RowDefinition Name="GroupMemberListRow" Height="*" />
+    </Grid.RowDefinitions>
+    <StatusBar Name="GroupDescriptionBar" Grid.Row="0" BorderThickness="0" MouseLeftButtonDown="StatusBar_MouseLeftButtonDown">
+      <StatusBar.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+          <GradientStop Color="#FFFFFF" Offset="0" />
+          <GradientStop Color="#B4EFFE" Offset="1" />
+        </LinearGradientBrush>
+      </StatusBar.Background>
+      <TextBlock VerticalAlignment="Center" Margin="2,0,0,0" Text="群公告" />
+    </StatusBar>
+    <Grid Grid.Row="1" Background="#FFE6F6FD">
+      <Border Background="#00FFFFFF" BorderBrush="#FFA7EAFE" BorderThickness="1,1,0,1" />
+      <TextBox Name="groupDescription" Background="#00FFFFFF" IsReadOnly="True" TextWrapping="Wrap" BorderThickness="0" ContextMenu="{x:Null}" />
+    </Grid>
+    <Grid Grid.Row="2">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="22" />
+        <RowDefinition Height="22" />
+      </Grid.RowDefinitions>
+      <StatusBar Name="GroupMemberListBar" Grid.Row="0" MouseLeftButtonDown="StatusBar_MouseLeftButtonDown">
+        <StatusBar.Background>
+          <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#FFFFFF" Offset="0" />
+            <GradientStop Color="#B4EFFE" Offset="1" />
+          </LinearGradientBrush>
+        </StatusBar.Background>
+        <TextBlock Text="群成员" VerticalAlignment="Center" Margin="2,0,0,0" />
+        <TextBlock Name="tbkGroupCount" VerticalAlignment="Center" />
+      </StatusBar>
+      <ib:IconButton x:Name="btnSearch" Click="btnSearch_Click" Grid.Row="0" Width="16" Height="16" VerticalAlignment="Center" ToolTip="群成员搜索" Icon="/IDKin.IM.Windows;component/Resources/Icon/searchIcon.png" HorizontalAlignment="Right" Margin="0,0,5,0" Visibility="Collapsed" />
+      <TextBox Name="tbxSearch" Grid.Row="1" BorderThickness="1" Visibility="Collapsed" />
+    </Grid>
+    <ib:GroupMemberListView x:Name="GroupMemberList" Grid.Row="3" BorderBrush="#FFA7EAFE" BorderThickness="1,1,0,0" Background="#FFE6F6FD" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+  </Grid>
+</UserControl>

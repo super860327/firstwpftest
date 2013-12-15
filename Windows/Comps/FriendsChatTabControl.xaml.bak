@@ -1,0 +1,9 @@
+<UserControl x:Class="IDKin.IM.Windows.Comps.FriendsChatTabControl" AllowDrop="True" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cc="clr-namespace:IDKin.IM.Windows.Comps">
+  <TabControl Name="ChatTab">
+    <TabItem Header="对话">
+      <cc:ChatComponent x:Name="ChatComponent" />
+    </TabItem>
+    <TabItem Header="工作动态" />
+    <TabItem Header="个人档案" />
+  </TabControl>
+</UserControl>

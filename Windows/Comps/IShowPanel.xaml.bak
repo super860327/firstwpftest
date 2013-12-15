@@ -1,0 +1,11 @@
+<UserControl x:Class="IDKin.IM.Windows.Comps.IShowPanel" Width="160" Background="#FFE7F5FA" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="180" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="180" />
+    </Grid.RowDefinitions>
+    <Image Grid.Row="0" Source="/IDKin.IM.Windows;component/Resources/Image/IshowMale.png" Margin="0,3,0,0" />
+    <Image Grid.Row="2" Source="/IDKin.IM.Windows;component/Resources/Image/IshowFemale.png" Margin="0,0,0,3" />
+  </Grid>
+</UserControl>

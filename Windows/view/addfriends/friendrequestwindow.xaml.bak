@@ -1,0 +1,41 @@
+<Window x:Class="IDKin.IM.Windows.View.AddFriends.FriendRequestWindow" Title="好友请求" Height="333" Width="455" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True" Background="#00FFFFFF" Style="{DynamicResource WindowStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mb="clr-namespace:IDKin.IM.Windows.Comps">
+  <Border Name="OuterBorder" Style="{DynamicResource OuterBorderStyle}">
+    <Border Name="InnerBorder" Style="{DynamicResource InnerBorderStyle}">
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="20" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Image Name="imgIcon" Grid.Row="0" SnapsToDevicePixels="True" Stretch="Fill" Width="16" Height="16" HorizontalAlignment="Left" Source="/IDKin.IM.Windows;component/Resources/Icon/ico_16.png" />
+        <TextBlock Grid.Row="0" Text="好友请求" Margin="20,0,0,0" />
+        <mb:MinButton x:Name="btnMin" Click="btnMin_Click" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,20,0" Width="16" Height="16" ToolTip="最小化" />
+        <mb:CloseButton x:Name="btnClose" Click="btnClose_Click" Grid.Row="0" HorizontalAlignment="Right" Width="16" Height="16" ToolTip="关闭" />
+        <Border Grid.Row="1" Margin="0">
+          <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.8,0">
+              <GradientStop Color="#F3F3F3" Offset="0" />
+              <GradientStop Color="#95DDFF" Offset="1" />
+            </LinearGradientBrush>
+          </Border.Background>
+          <Canvas>
+            <TextBlock Name="tbRequesterName" Canvas.Left="21" Canvas.Top="14" Text="XX-XX添加您为好友" />
+            <Rectangle Canvas.Left="21" Canvas.Top="55" Height="40" Width="40" Fill="#FFADD8E6" />
+            <TextBlock Name="tbkId" Canvas.Left="73" Canvas.Top="57" Text="犀利[415]" />
+            <TextBlock Name="tbkSex" Canvas.Left="73" Canvas.Top="77" Text="女" />
+            <TextBlock Name="tbkAge" Canvas.Left="99" Canvas.Top="77" Text="22" />
+            <TextBlock Name="tbkAddress" Canvas.Left="128" Canvas.Top="77" Text="广东 深圳" />
+            <TextBlock Name="tbkPost" Canvas.Left="213" Canvas.Top="77" Text="平面设计" />
+            <Button Name="btnViewInfo" Canvas.Left="343" Canvas.Top="57" Content="查看资料" Height="22" Width="60" Style="{DynamicResource NormalButtonStyle}" />
+            <RadioButton Name="radioButton1" Canvas.Left="21" Canvas.Top="127" Content="同意并添加对方为好友" Height="16" GroupName="AskType" IsChecked="True" DataContext="1" />
+            <RadioButton Name="radioButton2" Canvas.Left="21" Canvas.Top="149" Content="同意" Height="16" GroupName="AskType" DataContext="2" />
+            <RadioButton Name="radioButton3" Canvas.Left="21" Canvas.Top="171" Content="拒绝" Height="16" GroupName="AskType" DataContext="3" />
+            <TextBox Name="tbMessage" Canvas.Left="36" Canvas.Top="191" Height="23" Width="367" />
+          </Canvas>
+        </Border>
+        <Button Name="btnAgree" Content="确定" Grid.Row="2" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Width="60" Margin="0,0,71,0" Style="{DynamicResource NormalButtonStyle}" />
+        <Button Name="btnForget" Content="忽略" Grid.Row="2" Height="20" HorizontalAlignment="Right" VerticalAlignment="Center" Width="60" Margin="0,0,5,0" Style="{DynamicResource NormalButtonStyle}" />
+      </Grid>
+    </Border>
+  </Border>
+</Window>

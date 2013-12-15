@@ -1,0 +1,60 @@
+<Popup x:Class="IDKin.IM.Windows.Comps.ScreenshotPopup" AllowsTransparency="True" PopupAnimation="Fade" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Popup.Resources>
+    <Style x:Key="{x:Type RadioButton}" TargetType="{x:Type RadioButton}">
+      <Setter Property="FrameworkElement.Width" Value="150" />
+      <Setter Property="FrameworkElement.Height" Value="22" />
+      <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+      <Setter Property="FrameworkElement.HorizontalAlignment" Value="Left" />
+      <Setter Property="FrameworkElement.VerticalAlignment" Value="Center" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type RadioButton}">
+            <Border Name="Border" BorderThickness="1" CornerRadius="2" BorderBrush="#00FFFFFF" VerticalAlignment="Center" Height="22">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="25" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Path Name="CheckMark" Grid.Column="0" Width="7" Height="9" SnapsToDevicePixels="True" Fill="#FF289BCE" Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center" Data="M103.78572,598.96112L105.09846,597.5661 107.00806,600.16229C107.00806,600.16229 109.91004,592.74463 109.91004,592.74463 109.91004,592.74463 111.74678,593.79761 111.74678,593.79761 111.74678,593.79761 107.88566,602.75848 107.88566,602.75848L106.60118,602.75848z" Visibility="Collapsed" />
+                <ContentPresenter Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" />
+              </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="UIElement.IsMouseOver" Value="True">
+                <Setter TargetName="Border" Property="Border.Background" Value="#FFCDF4FF" />
+                <Setter TargetName="Border" Property="Border.BorderBrush" Value="#FFB3E4F9" />
+              </Trigger>
+              <Trigger Property="ToggleButton.IsChecked" Value="True">
+                <Setter TargetName="CheckMark" Property="UIElement.Visibility" Value="Visible" />
+              </Trigger>
+              <Trigger Property="ToggleButton.IsChecked" Value="False">
+                <Setter TargetName="CheckMark" Property="UIElement.Visibility" Value="Collapsed" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </Popup.Resources>
+  <Border CornerRadius="3" BorderBrush="#FF6B9EAF" BorderThickness="1" Background="#FFDDF5FC" Padding="1" VerticalAlignment="Center">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="25" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Border Grid.Column="0" Background="#FFCDF4FF" Width="25" HorizontalAlignment="Left" />
+      <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" Background="#00FFFFFF">
+        <RadioButton Name="rbtnCutShow" GroupName="CutGroup">
+          <RadioButton.Content>
+            <TextBlock Text="截图不隐藏该窗口" VerticalAlignment="Center" Margin="5,0,0,0" />
+          </RadioButton.Content>
+        </RadioButton>
+        <RadioButton Name="rbtnCutHide" GroupName="CutGroup">
+          <RadioButton.Content>
+            <TextBlock Text="截图隐藏该窗口" VerticalAlignment="Center" Margin="5,0,0,0" />
+          </RadioButton.Content>
+        </RadioButton>
+      </StackPanel>
+    </Grid>
+  </Border>
+</Popup>

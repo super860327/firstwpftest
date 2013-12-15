@@ -1,0 +1,328 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ImageBrush x:Key="TopGlowBackground"
+                ImageSource="/IDKin.IM.Theme;component/Resources/Images/topGlowbg.png"
+                AlignmentY="Top" />
+    <Style x:Key="WindowStyle"
+           TargetType="{x:Type Window}">
+        <Setter Property="UIElement.SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="FrameworkElement.UseLayoutRounding"
+                Value="False" />
+        <Setter Property="Control.FontFamily"
+                Value="宋体" />
+        <Setter Property="Control.FontSize"
+                Value="12" />
+        <Setter Property="FrameworkElement.FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="TextOptions.TextFormattingMode"
+                Value="Display" />
+        <Setter Property="RenderOptions.BitmapScalingMode"
+                Value="NearestNeighbor" />
+    </Style>
+    <Style x:Key="PageStyle"
+           TargetType="{x:Type Page}">
+        <Setter Property="UIElement.SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="FrameworkElement.UseLayoutRounding"
+                Value="False" />
+        <Setter Property="Page.FontFamily"
+                Value="宋体" />
+        <Setter Property="Page.FontSize"
+                Value="12" />
+        <Setter Property="FrameworkElement.FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="TextOptions.TextFormattingMode"
+                Value="Display" />
+        <Setter Property="RenderOptions.BitmapScalingMode"
+                Value="NearestNeighbor" />
+    </Style>
+    <Style x:Key="LogonWindowStyle"
+           TargetType="{x:Type Window}">
+        <Setter Property="Control.FontFamily"
+                Value="宋体" />
+        <Setter Property="Control.FontSize"
+                Value="12" />
+        <Setter Property="Window.WindowStyle"
+                Value="None" />
+        <Setter Property="Window.AllowsTransparency"
+                Value="True" />
+        <Setter Property="Control.Background"
+                Value="#00FFFFFF" />
+        <Setter Property="Window.ShowInTaskbar"
+                Value="False" />
+        <Setter Property="Window.ResizeMode"
+                Value="CanMinimize" />
+        <Setter Property="UIElement.AllowDrop"
+                Value="False" />
+        <Setter Property="UIElement.SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="FrameworkElement.UseLayoutRounding"
+                Value="False" />
+        <Setter Property="TextOptions.TextFormattingMode"
+                Value="Display" />
+        <Setter Property="RenderOptions.BitmapScalingMode"
+                Value="NearestNeighbor" />
+    </Style>
+    <Style x:Key="OuterBorderStyle"
+           TargetType="{x:Type Border}">
+        <Setter Property="Border.BorderThickness"
+                Value="2" />
+        <Setter Property="Border.CornerRadius"
+                Value="3" />
+        <Setter Property="Border.BorderBrush">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#5F98B5"
+                                  Offset="1" />
+                    <GradientStop Color="#44caf3"
+                                  Offset="0.8" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Border.Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="#FF00D2FF"
+                                  Offset="0.017" />
+                    <GradientStop Color="#FF00A0E9"
+                                  Offset="1" />
+                    <GradientStop Color="#FF00AFEC"
+                                  Offset="0.522" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="InnerBorderStyle"
+           TargetType="{x:Type Border}">
+        <Setter Property="Border.BorderThickness"
+                Value="1" />
+        <Setter Property="Border.CornerRadius"
+                Value="1.5" />
+        <Setter Property="Border.BorderBrush"
+                Value="#FF8ACADD" />
+        <Setter Property="Border.Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/IDKin.IM.Theme;component/Resources/Images/winbg.png"
+                            Stretch="None"
+                            AlignmentX="Left"
+                            AlignmentY="Top" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="NormalButtonStyle"
+           TargetType="{x:Type Button}">
+        <Setter Property="Control.Padding"
+                Value="0" />
+        <Setter Property="FrameworkElement.MinHeight"
+                Value="20" />
+        <Setter Property="FrameworkElement.OverridesDefaultStyle"
+                Value="True" />
+        <Setter Property="UIElement.SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="FrameworkElement.FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="HoverOn">
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                          Storyboard.TargetName="Background"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00.1000000"
+                                                     Value="#F3F3F3" />
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                          Storyboard.TargetName="Background"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00.1000000"
+                                                     Value="#F3F3F3" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="HoverOff">
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                          Storyboard.TargetName="Background"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00.3000000"
+                                                     Value="#FF96DFFD" />
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                          Storyboard.TargetName="Background"
+                                                          Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00.3000000"
+                                                     Value="#FF96DFFD" />
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="PressedOn">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetName="Background"
+                                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000"
+                                                      Value="0.65" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="PressedOff">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                           Storyboard.TargetName="Background"
+                                                           Storyboard.TargetProperty="(UIElement.Opacity)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.3000000"
+                                                      Value="1" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid Name="GridRoot">
+                        <Border Name="OutBorder"
+                                BorderBrush="#FF34B2F1"
+                                BorderThickness="1"
+                                Background="#00FFFFFF"
+                                CornerRadius="3" />
+                        <Border Name="Background"
+                                BorderThickness="1"
+                                BorderBrush="#FF96DFFD"
+                                CornerRadius="3"
+                                Margin="1">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1"
+                                                     MappingMode="RelativeToBoundingBox"
+                                                     StartPoint="0.5,0">
+                                    <GradientStop Color="#FF96DFFD"
+                                                  Offset="0.875" />
+                                    <GradientStop Color="#36B4E4"
+                                                  Offset="0.5" />
+                                    <GradientStop Color="#FF96DFFD"
+                                                  Offset="0.155" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="UIElement.IsMouseOver"
+                                 Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource HoverOff}" />
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource HoverOn}" />
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="ButtonBase.IsPressed"
+                                 Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource PressedOff}" />
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource PressedOn}" />
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="NormalBrush"
+                     Color="#0073AF" />
+    <SolidColorBrush x:Key="NormalBorderBrush"
+                     Color="#00D2FF" />
+    <SolidColorBrush x:Key="DarkBrush"
+                     Color="#0073AF" />
+    <SolidColorBrush x:Key="PressedBrush"
+                     Color="#0073AF" />
+    <SolidColorBrush x:Key="PressedBorderBrush"
+                     Color="#73F7FF" />
+    <SolidColorBrush x:Key="DisabledForegroundBrush"
+                     Color="#888" />
+    <SolidColorBrush x:Key="DisabledBackgroundBrush"
+                     Color="#EEE" />
+    <SolidColorBrush x:Key="DisabledBorderBrush"
+                     Color="#AAA" />
+    <SolidColorBrush x:Key="GlyphBrush"
+                     Color="#73F7FF" />
+    <Style x:Key="CheckBoxStyle"
+           TargetType="{x:Type CheckBox}">
+        <Setter Property="UIElement.SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="FrameworkElement.OverridesDefaultStyle"
+                Value="True" />
+        <Setter Property="FrameworkElement.FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <BulletDecorator Background="#00FFFFFF">
+                        <BulletDecorator.Bullet>
+                            <Border Name="Border"
+                                    Width="13"
+                                    Height="13"
+                                    CornerRadius="0"
+                                    Margin="1"
+                                    Background="{StaticResource NormalBrush}"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource NormalBorderBrush}">
+                                <Path Name="CheckMark"
+                                      Width="7"
+                                      Height="9"
+                                      SnapsToDevicePixels="True"
+                                      Fill="{StaticResource GlyphBrush}"
+                                      Stretch="Fill"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      Data="M103.78572,598.96112L105.09846,597.5661 107.00806,600.16229C107.00806,600.16229 109.91004,592.74463 109.91004,592.74463 109.91004,592.74463 111.74678,593.79761 111.74678,593.79761 111.74678,593.79761 107.88566,602.75848 107.88566,602.75848L106.60118,602.75848z"
+                                      Visibility="Collapsed" />
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <ContentPresenter Margin="4,0,0,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          RecognizesAccessKey="True" />
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ToggleButton.IsChecked"
+                                 Value="False">
+                            <Setter TargetName="CheckMark"
+                                    Property="UIElement.Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="ToggleButton.IsChecked"
+                                 Value="True">
+                            <Setter TargetName="CheckMark"
+                                    Property="UIElement.Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="Border"
+                                    Value="{StaticResource DarkBrush}"
+                                    Property="Border.Background" />
+                        </Trigger>
+                        <Trigger Property="ButtonBase.IsPressed"
+                                 Value="True">
+                            <Setter TargetName="Border"
+                                    Value="{StaticResource PressedBrush}"
+                                    Property="Border.Background" />
+                            <Setter TargetName="Border"
+                                    Value="{StaticResource PressedBorderBrush}"
+                                    Property="Border.BorderBrush" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="Border"
+                                    Value="{StaticResource DisabledBackgroundBrush}"
+                                    Property="Border.Background" />
+                            <Setter TargetName="Border"
+                                    Value="{StaticResource DisabledBorderBrush}"
+                                    Property="Border.BorderBrush" />
+                            <Setter Value="{StaticResource DisabledForegroundBrush}"
+                                    Property="Control.Foreground" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

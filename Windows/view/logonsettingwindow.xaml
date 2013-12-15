@@ -1,0 +1,217 @@
+<Window x:Class="IDKin.IM.Windows.View.LogonSettingWindow"
+        Name="logonSetting"
+        Title="{DynamicResource LogonSettingWindowTitle}"
+        Style="{DynamicResource LogonWindowStyle}"
+        Width="290"
+        Height="210"
+        KeyDown="logonSetting_KeyDown"
+        Closing="logonSetting_Closing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ib="clr-namespace:IDKin.IM.CustomComponents.Controls;assembly=IDKin.IM.CustomComponents">
+    <Window.Resources>
+        <Style x:Key="HTabItemStyle"
+               TargetType="{x:Type TabItem}">
+            <Setter Property="Control.Background"
+                    Value="#00FFFFFF" />
+            <Setter Property="FrameworkElement.FocusVisualStyle"
+                    Value="{x:Null}" />
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid Margin="3">
+                            <Border Name="Border"
+                                    Background="#00FFFFFF"
+                                    BorderBrush="#00FFFFFF"
+                                    BorderThickness="1"
+                                    CornerRadius="5">
+                                <ContentPresenter Name="ContentSite"
+                                                  VerticalAlignment="Center"
+                                                  Margin="10,2,8,2"
+                                                  HorizontalAlignment="Center"
+                                                  ContentSource="Header" />
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TabItem.IsSelected"
+                                     Value="True">
+                                <Setter TargetName="Border"
+                                        Property="Border.Background"
+                                        Value="#FF46D7EB" />
+                            </Trigger>
+                            <Trigger Property="TabItem.IsSelected"
+                                     Value="False">
+                                <Setter TargetName="Border"
+                                        Property="Border.Background"
+                                        Value="#00FFFFFF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Border Name="OuterBorder"
+            BorderThickness="2"
+            CornerRadius="3"
+            Margin="10">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                <GradientStop Color="#5F98B5"
+                              Offset="1" />
+                <GradientStop Color="#44caf3"
+                              Offset="0.8" />
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                <GradientStop Color="#FF00D2FF"
+                              Offset="0.017" />
+                <GradientStop Color="#FF00A0E9"
+                              Offset="1" />
+                <GradientStop Color="#FF00AFEC"
+                              Offset="0.522" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="15"
+                              ShadowDepth="0.2"
+                              Opacity="0.5" />
+        </Border.Effect>
+        <Border Name="InnerBorder"
+                BorderBrush="#FF8ACADD"
+                BorderThickness="1"
+                CornerRadius="1.5">
+            <Border.Background>
+                <ImageBrush x:Name="imgLogonBG"
+                            ImageSource="/IDKin.IM.Windows;component/Resources/Image/logonbg.png"
+                            Stretch="Fill"
+                            AlignmentX="Center"
+                            AlignmentY="Top" />
+            </Border.Background>
+            <Grid Name="RootGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StatusBar Name="topBar"
+                           Grid.Row="0"
+                           VerticalAlignment="Top"
+                           BorderThickness="0"
+                           BorderBrush="#00FFFFFF"
+                           Background="#00FFFFFF">
+                    <Image Name="imgIcon"
+                           Width="16"
+                           Height="16"
+                           Stretch="Fill"
+                           Source="/IDKin.IM.Windows;component/Resources/Icon/ico_16.png" />
+                    <TextBlock Grid.Column="0"
+                               TextBlock.Foreground="#FFFFFFFF"
+                               TextBlock.FontWeight="Bold"
+                               Text="{Binding ElementName=logonSetting, Path=Title}">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Gray"
+                                              ShadowDepth="3"
+                                              Opacity="0.5" />
+                        </TextBlock.Effect></TextBlock>
+                </StatusBar>
+                <ib:ImageButton Name="btnClose"
+                                Grid.Row="0"
+                                FrameworkElement.VerticalAlignment="Top"
+                                FrameworkElement.HorizontalAlignment="Right"
+                                FrameworkElement.Margin="3"
+                                FrameworkElement.Width="16"
+                                FrameworkElement.Height="16"
+                                FrameworkElement.ToolTip="关闭"
+                                NormalImage="/IDKin.IM.Windows;component/Resources/Image/close.png"
+                                HoverImage="/IDKin.IM.Windows;component/Resources/Image/closeOver.png"
+                                PressedImage="/IDKin.IM.Windows;component/Resources/Image/closePress.png"
+                                Click="btnClose_Click" />
+                <Border Grid.Row="1"
+                        Height="33"
+                        VerticalAlignment="Top">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1"
+                                             MappingMode="RelativeToBoundingBox"
+                                             StartPoint="0.5,0">
+                            <GradientStop Color="#F3F3F3"
+                                          Offset="0" />
+                            <GradientStop Color="#B0EFFF"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                <TabControl Grid.Row="1"
+                            Background="#FFEEF6FB"
+                            BorderThickness="0">
+                    <TabItem Header="网络设置"
+                             Style="{StaticResource HTabItemStyle}"
+                             IsSelected="True">
+                        <Canvas Background="#00FFFFFF">
+                            <TextBlock Canvas.Left="22"
+                                       Canvas.Top="23"
+                                       Text="服务器" />
+                            <TextBox Name="tbxServer"
+                                     Text="inserver.idu.oa.idkin.com"
+                                     Canvas.Left="69"
+                                     Canvas.Top="20"
+                                     Width="162" />
+                            <TextBlock Canvas.Left="22"
+                                       Canvas.Top="51"
+                                       Text="端口号" />
+                            <TextBox Name="tbxPort"
+                                     Text="6200"
+                                     Canvas.Left="69"
+                                     Canvas.Top="51"
+                                     Width="162" />
+                            <Button Name="btnSure"
+                                    Canvas.Left="32"
+                                    Canvas.Top="93"
+                                    Content="确定"
+                                    Height="20"
+                                    Width="60"
+                                    Style="{DynamicResource NormalButtonStyle}"
+                                    FocusVisualStyle="{x:Null}"
+                                    Click="btnSure_Click" />
+                            <Button Name="btnCancel"
+                                    Canvas.Left="99"
+                                    Canvas.Top="93"
+                                    Content="取消"
+                                    Height="20"
+                                    Width="60"
+                                    Style="{DynamicResource NormalButtonStyle}"
+                                    FocusVisualStyle="{x:Null}"
+                                    Click="btnCancel_Click" />
+                            <Button Name="btnApply"
+                                    Canvas.Left="164"
+                                    Canvas.Top="93"
+                                    Content="使用预设"
+                                    Height="20"
+                                    Width="60"
+                                    Style="{DynamicResource NormalButtonStyle}"
+                                    FocusVisualStyle="{x:Null}"
+                                    Click="btnApply_Click" />
+                        </Canvas>
+                    </TabItem>
+                    <TabItem Header="登录设置"
+                             Style="{StaticResource HTabItemStyle}">
+                        <Canvas Background="#00FFFFFF">
+                            <CheckBox Name="chkAutoStart"
+                                      Canvas.Left="66"
+                                      Canvas.Top="38"
+                                      Content="开机自动启动"
+                                      FocusVisualStyle="{x:Null}" />
+                            <CheckBox Name="chkAutoLogon"
+                                      Canvas.Left="66"
+                                      Canvas.Top="72"
+                                      Content="启动时为我自动登录"
+                                      FocusVisualStyle="{x:Null}" />
+                        </Canvas>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

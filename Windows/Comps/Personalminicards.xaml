@@ -1,0 +1,29 @@
+<Popup x:Class="IDKin.IM.Windows.Comps.Personalminicards" Height="150" Width="320" AllowsTransparency="True" PopupAnimation="Fade" HorizontalOffset="-1" MouseLeave="Popup_MouseLeave" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Popup.Resources>
+    <Style x:Key="HyperlinkTextStyle" TargetType="{x:Type TextBlock}">
+      <Setter Property="TextBlock.Foreground" Value="#FF008AC9" />
+      <Style.Triggers>
+        <Trigger Property="UIElement.IsMouseOver" Value="True">
+          <Setter Property="TextBlock.Foreground" Value="#FFFF0000" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+  </Popup.Resources>
+  <Border Background="#FFDAF6FF" CornerRadius="3" BorderBrush="#FF5EB5F6" BorderThickness="1">
+    <Canvas>
+      <Image Name="imgIcon" Canvas.Left="8" Canvas.Top="10" Width="100" Height="110" />
+      <TextBlock Name="tbkName" Canvas.Left="115" Canvas.Top="5" Width="175">
+        <TextBlock Name="tbkNameID" Text="Jacky[123456]" Style="{StaticResource HyperlinkTextStyle}" MouseDown="Hyperlink_Click" />
+      </TextBlock>
+      <TextBlock Name="tbkSignature" Canvas.Left="115" Canvas.Top="26" Width="175" Height="35" Text="个性签名" TextBlock.Foreground="#FF808080" TextWrapping="Wrap" TextBlock.LineHeight="20" />
+      <TextBlock Canvas.Left="115" Canvas.Top="65" Text="电话：" Width="35" />
+      <TextBlock Name="tbkPhone" Canvas.Left="149" Canvas.Top="65" Text="" Width="141" />
+      <TextBlock Canvas.Left="115" Canvas.Top="87" Text="分机：" Width="35" />
+      <TextBlock Name="tbkExtension" Canvas.Left="149" Canvas.Top="87" Text="" Width="141" />
+      <TextBlock Canvas.Left="115" Canvas.Top="106" Text="手机：" Width="35" />
+      <TextBlock Name="tbkMobile" Canvas.Left="149" Canvas.Top="106" Text="" Width="141" />
+      <TextBlock Canvas.Left="115" Canvas.Top="128" Text="邮箱：" Width="35" />
+      <TextBlock Name="tbkEmail" Canvas.Left="149" Canvas.Top="128" Text="" Width="141" />
+    </Canvas>
+  </Border>
+</Popup>

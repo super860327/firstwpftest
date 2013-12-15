@@ -1,0 +1,61 @@
+<UserControl x:Class="IDKin.IM.Windows.Comps.OA.OACurrentWorkControl" 
+             Margin="-4" Background="#FFE6F8FE" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:oaacw="clr-namespace:IDKin.IM.Windows.Comps.OA.CurrentWork">
+  <UserControl.Resources>
+    <Style x:Key="{x:Type TabItem}" TargetType="{x:Type TabItem}">
+      <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+      <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="False" />
+      <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+      <Setter Property="Control.BorderThickness" Value="0" />
+      <Setter Property="Control.BorderBrush" Value="#00FFFFFF" />
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type TabItem}">
+            <Grid Height="25" Margin="0,0,0,-1">
+              <TextBlock Name="PART_Text" Text="{TemplateBinding HeaderedContentControl.Header}" Margin="6,1,6,1" VerticalAlignment="Center" />
+              <Image Name="PART_Image" Source="/IDKin.IM.Windows;component/Resources/Image/triangleHideBorder.png" Stretch="None" SnapsToDevicePixels="True" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="TabItem.IsSelected" Value="True">
+                <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="#FF28A6D2" />
+                <Setter TargetName="PART_Image" Property="UIElement.Visibility" Value="Visible" />
+              </Trigger>
+              <Trigger Property="TabItem.IsSelected" Value="False">
+                <Setter TargetName="PART_Text" Property="TextBlock.Foreground" Value="#FF000000" />
+                <Setter TargetName="PART_Image" Property="UIElement.Visibility" Value="Hidden" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+  </UserControl.Resources>
+  <Grid>
+    <TabControl Name="tbcDynamicWork" BorderThickness="0,1,0,0" BorderBrush="#FF29A7D2" Background="#00FFFFFF" Margin="0,-1,0,0" SelectionChanged="tbcDynamicWork_SelectionChanged">
+      <TabItem Header="与我有关的" BorderThickness="0" />
+      <TabItem Name="tabItemWorkCooperation" Header="工作协同" BorderThickness="0">
+        <oaacw:OAAllCurrentWork x:Name="crwWorkCooperation" Margin="-4" />
+      </TabItem>
+      <TabItem Name="tabItemInsideNotice" Header="行政审批" BorderThickness="0">
+        <oaacw:OAAllCurrentWork x:Name="crwInsideNotice" Margin="-4" />
+      </TabItem>
+      <TabItem Name="tabItemProjectManagement" Header="项目进度管理" BorderThickness="0">
+        <oaacw:OAAllCurrentWork x:Name="crwProjectManagement" Margin="-4" />
+      </TabItem>
+      <TabItem Name="tabItemDocumentManagement" Header="企业资料库" BorderThickness="0">
+        <oaacw:OAAllCurrentWork x:Name="crwDocumentManagement" Margin="-4" />
+      </TabItem>
+      <TabItem Name="tabItemWorkPlan" Header="工作计划" BorderThickness="0">
+        <oaacw:OAAllCurrentWork x:Name="crwWorkPlan" Margin="-4" />
+      </TabItem>
+      <TabItem Name="tabItemInsideDiscussion" Header="企业论坛" BorderThickness="0">
+        <oaacw:OAAllCurrentWork x:Name="crwInsideDiscussion" Margin="-4" />
+      </TabItem>
+      <TabItem Name="tabItemSystemManagement" Header="企业管理" BorderThickness="0">
+        <oaacw:OAAllCurrentWork x:Name="crwSystemManagement" Margin="-4" />
+      </TabItem>
+    </TabControl>
+  </Grid>
+</UserControl>

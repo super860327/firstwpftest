@@ -1,0 +1,131 @@
+<bw:BaseWindow x:Class="IDKin.IM.Windows.View.LogonWindow"
+               Loaded="Window_Loaded"
+               Closing="BaseWindow_Closing"
+               Title="{DynamicResource LogonWindowTitle}"
+               Style="{DynamicResource LogonWindowStyle}"
+               Height="581"
+               Width="801"
+               MinWidth="250"
+               MinHeight="520"
+               WindowStartupLocation="CenterScreen"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:bw="clr-namespace:IDKin.IM.Windows.Comps"
+               xmlns:ib="clr-namespace:IDKin.IM.CustomComponents.Controls;assembly=IDKin.IM.CustomComponents">
+    <Border Name="OuterBorder"
+            BorderThickness="2"
+            CornerRadius="3">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                <GradientStop Color="#5F98B5"
+                              Offset="1" />
+                <GradientStop Color="#44caf3"
+                              Offset="0.8" />
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1"
+                                 StartPoint="0.5,0">
+                <GradientStop Color="#FF00D2FF"
+                              Offset="0.017" />
+                <GradientStop Color="#FF00A0E9"
+                              Offset="1" />
+                <GradientStop Color="#FF00AFEC"
+                              Offset="0.522" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Border Name="InnerBorder"
+                BorderBrush="#FF8ACADD"
+                BorderThickness="1"
+                CornerRadius="1.5">
+            <Border.Background>
+                <ImageBrush x:Name="imgLogonBG"
+                            ImageSource="/IDKin.IM.Windows;component/Resources/Image/logonbg.png"
+                            Stretch="None"
+                            AlignmentX="Center"
+                            AlignmentY="Top" />
+            </Border.Background>
+            <Grid Name="RootGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border Name="RootBorder"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Panel.ZIndex="2"
+                        Background="#FF000000"
+                        Opacity="0.5"
+                        Visibility="Collapsed" />
+                <StatusBar Name="topBar"
+                           Grid.Row="0"
+                           VerticalAlignment="Top"
+                           BorderThickness="0"
+                           Panel.ZIndex="1"
+                           BorderBrush="#00FFFFFF"
+                           MouseDoubleClick="topBar_MouseDoubleClick">
+                    <StatusBar.Background>
+                        <ImageBrush ImageSource="/IDKin.IM.Windows;component/Resources/Image/topGlowbg.png"
+                                    AlignmentY="Top" />
+                    </StatusBar.Background>
+                    <Image Name="imgIcon"
+                           Width="16"
+                           Height="16"
+                           Stretch="Fill"
+                           Source="/IDKin.IM.Windows;component/Resources/Icon/ico_16.png" />
+                    <TextBlock Grid.Column="0"
+                               Text="{DynamicResource LogonWindowTitle}"
+                               TextBlock.FontWeight="Bold"
+                               TextBlock.Foreground="#FFFFFFFF">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="Gray"
+                                              ShadowDepth="3"
+                                              Opacity="0.5" />
+                        </TextBlock.Effect></TextBlock>
+                </StatusBar>
+                <StackPanel Grid.Row="0"
+                            Background="#00FFFFFF"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Margin="0,4,0,0"
+                            ZIndex="1">
+                    <ib:ImageButton Name="btnMin"
+                                    Margin="3,0,3,0"
+                                    Width="16"
+                                    Height="16"
+                                    ToolTip="最小化"
+                                    NormalImage="/IDKin.IM.Windows;component/Resources/Image/min.png"
+                                    HoverImage="/IDKin.IM.Windows;component/Resources/Image/minOver.png"
+                                    PressedImage="/IDKin.IM.Windows;component/Resources/Image/minPress.png"
+                                    Click="btnMin_Click" />
+                    <ib:ImageButton Name="btnMax"
+                                    Margin="3,0,3,0"
+                                    Width="16"
+                                    Height="16"
+                                    ToolTip="最大化"
+                                    Background="Red"
+                                    NormalImage="/IDKin.IM.Windows;component/Resources/Image/max.png"
+                                    HoverImage="/IDKin.IM.Windows;component/Resources/Image/maxOver.png"
+                                    PressedImage="/IDKin.IM.Windows;component/Resources/Image/maxPress.png"
+                                    Click="btnMax_Click" />
+                    <ib:ImageButton Name="btnClose"
+                                    Margin="3,0,3,0"
+                                    Width="16"
+                                    Height="16"
+                                    ToolTip="关闭"
+                                    NormalImage="/IDKin.IM.Windows;component/Resources/Image/close.png"
+                                    HoverImage="/IDKin.IM.Windows;component/Resources/Image/closeOver.png"
+                                    PressedImage="/IDKin.IM.Windows;component/Resources/Image/closePress.png"
+                                    Click="btnClose_Click" />
+                </StackPanel>
+                <Grid Name="ContentGrid"
+                      Grid.Row="1"
+                      Background="#00FFFFFF">
+                    <bw:LogonPanel x:Name="LogonPanel" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</bw:BaseWindow>
